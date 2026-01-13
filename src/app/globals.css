@@ -66,3 +66,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .header-scrolled-bg {
+    background: linear-gradient(110deg, hsl(var(--primary) / 0.1), hsl(var(--background)) 50%, hsl(48, 100%, 50%) / 0.1);
+    background-size: 200% 100%;
+    animation: gradient-animation 10s ease infinite;
+  }
+}

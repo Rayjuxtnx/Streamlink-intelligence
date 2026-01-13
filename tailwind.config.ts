@@ -102,12 +102,18 @@ export default {
           '75%': { transform: 'translate(-40%, -65%) scale(1)' },
           '100%': { transform: 'translate(-50%, -50%) scale(1)' },
         },
+        'gradient-animation': {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'blob-one': 'blob-one 20s infinite ease-in-out',
         'blob-two': 'blob-two 25s infinite ease-in-out',
+        'gradient-animation': 'gradient-animation 10s ease infinite',
       },
     },
   },
