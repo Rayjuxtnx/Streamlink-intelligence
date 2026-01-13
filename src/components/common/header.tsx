@@ -12,7 +12,7 @@ import { Menu, Mountain } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -24,9 +24,21 @@ const navLinks = [
 
 export function Header() {
   const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className={cn(
+      "sticky top-0 z-50 w-full transition-all duration-300",
+      isScrolled ? "border-b border-border/40 bg-background/95 backdrop-blur-sm" : "bg-transparent"
+    )}>
       <div className="container flex h-14 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <Mountain className="h-6 w-6 text-primary" />
