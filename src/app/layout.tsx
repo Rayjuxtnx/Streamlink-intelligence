@@ -36,8 +36,8 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="relative flex min-h-dvh flex-col bg-background">
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-              <div className="absolute top-1/2 left-1/2 w-[60rem] h-[60rem] bg-primary/25 rounded-full filter blur-3xl animate-blob opacity-50 animation-delay-2000"></div>
-              <div className="absolute top-1/2 left-1/2 w-[50rem] h-[50rem] bg-accent-neon/20 rounded-full filter blur-3xl animate-blob opacity-30 animation-delay-4000"></div>
+              <div className="absolute top-1/2 left-1/2 w-[60rem] h-[60rem] bg-accent-blue/20 rounded-full filter blur-3xl animate-blob-one opacity-30"></div>
+              <div className="absolute top-1/2 left-1/2 w-[50rem] h-[50rem] bg-accent-yellow/20 rounded-full filter blur-3xl animate-blob-two opacity-30"></div>
             </div>
             <Header />
             <main className="flex-1">{children}</main>
