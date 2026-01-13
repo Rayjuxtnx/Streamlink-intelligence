@@ -20,16 +20,10 @@ const leadershipTeam = [
     imageId: 'mr-mark',
   },
   {
-    name: 'Mr Philip',
-    role: 'Lead Software Engineer',
-    description: 'Full-stack development, microservices architecture, and AI-driven solutions for enterprise applications.',
-    imageId: 'mr-philip',
-  },
-  {
     name: 'Philip',
-    role: 'Cloud & Security Specialist',
-    description: 'Multi-cloud architecture, cybersecurity frameworks, and compliance for regulated industries.',
-    imageId: 'philip',
+    role: 'Lead Software Engineer & Cloud Security Specialist',
+    description: 'A full-stack developer and cloud security expert, specializing in microservices, AI-driven solutions, multi-cloud architecture, and cybersecurity frameworks.',
+    imageId: 'mr-philip',
   },
 ];
 
@@ -98,7 +92,7 @@ export default function OurTeamPage() {
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
             Visionary leaders driving technological innovation
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {leadershipTeam.map((person) => {
               const image = leadershipImages.find(img => img.id === person.imageId);
               return (
