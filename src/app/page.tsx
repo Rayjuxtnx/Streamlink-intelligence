@@ -161,16 +161,16 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-primary text-primary-foreground">
+      <section className="py-16 md:py-24">
         <div className="container text-center">
           <h2 className="text-3xl font-bold font-headline">
             Ready to transform your technology infrastructure?
           </h2>
-          <p className="mt-2 mb-8 max-w-xl mx-auto opacity-80">
+          <p className="mt-2 mb-8 max-w-xl mx-auto text-muted-foreground">
             Let’s discuss how Streamlink can support your business and propel
             you into the future of technology.
           </p>
-          <Button asChild size="lg" variant="secondary">
+          <Button asChild size="lg">
             <Link href="/contact">Contact Us Today</Link>
           </Button>
         </div>
