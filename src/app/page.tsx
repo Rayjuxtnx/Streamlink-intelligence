@@ -86,7 +86,7 @@ export default function Home() {
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/70"></div>
         <div className="container relative z-10 text-center text-primary-foreground">
           <h1 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl font-headline">
             STREAMLINK TECHNOLOGIES OPERATIONS
@@ -119,7 +119,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300 hover:border-primary/50 hover:-translate-y-1">
                 <CardHeader>
                   <div className="mx-auto bg-primary/10 text-primary p-4 rounded-full w-fit">
                     <service.icon className="h-8 w-8" />

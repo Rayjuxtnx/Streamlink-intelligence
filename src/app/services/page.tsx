@@ -76,7 +76,7 @@ export default function ServicesPage() {
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => (
-              <Card key={service.id} id={service.id} className="flex flex-col hover:shadow-lg transition-shadow">
+              <Card key={service.id} id={service.id} className="flex flex-col hover:shadow-lg transition-all duration-300 hover:border-primary/50 hover:-translate-y-1">
                 <CardHeader>
                   <div className="flex items-center gap-4">
                     <div className="bg-primary/10 text-primary p-3 rounded-md flex-shrink-0">

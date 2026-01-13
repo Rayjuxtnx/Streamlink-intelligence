@@ -65,7 +65,7 @@ export default function AboutPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {coreValues.map((value) => (
-              <Card key={value.title} className="text-center hover:shadow-lg transition-shadow">
+              <Card key={value.title} className="text-center hover:shadow-lg transition-all duration-300 hover:border-primary/50 hover:-translate-y-1">
                 <CardHeader>
                   <div className="mx-auto bg-primary/10 text-primary p-4 rounded-full w-fit">
                     <value.icon className="h-8 w-8" />
