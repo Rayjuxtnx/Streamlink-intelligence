@@ -91,7 +91,7 @@ export default {
             transform: 'translate(-50%, -50%) scale(1)',
           },
           '33%': {
-            transform: 'translate(-30%, -60%) scale(1.2)',
+            transform: 'translate(-30%, -60%) scale(1.1)',
           },
           '66%': {
             transform: 'translate(-70%, -40%) scale(0.9)',
