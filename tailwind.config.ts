@@ -86,10 +86,25 @@ export default {
             height: '0',
           },
         },
+        blob: {
+          '0%': {
+            transform: 'translate(-50%, -50%) scale(1)',
+          },
+          '33%': {
+            transform: 'translate(-30%, -60%) scale(1.2)',
+          },
+          '66%': {
+            transform: 'translate(-70%, -40%) scale(0.9)',
+          },
+          '100%': {
+            transform: 'translate(-50%, -50%) scale(1)',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        blob: 'blob 15s infinite cubic-bezier(0.6, 0.6, 0.4, 0.4)',
       },
     },
   },
