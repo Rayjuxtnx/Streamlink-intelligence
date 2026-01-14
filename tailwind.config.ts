@@ -152,6 +152,11 @@ export default {
             '0%, 100%': { transform: 'scale(1)', opacity: '0.4' },
             '50%': { transform: 'scale(0.9)', opacity: '0.7' },
         },
+        'text-gradient': {
+            'to': {
+                backgroundPosition: '200% center',
+            },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -165,6 +170,7 @@ export default {
         'glow-subtle': 'glow-subtle 8s ease-in-out infinite',
         'preloader-pulse-outer': 'preloader-pulse-outer 3s infinite ease-in-out',
         'preloader-pulse-inner': 'preloader-pulse-inner 3s infinite ease-in-out -1.5s',
+        'text-gradient': 'text-gradient 2s linear infinite',
       },
     },
   },
