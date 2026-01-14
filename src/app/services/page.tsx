@@ -58,7 +58,7 @@ const serviceSections = [
         title: 'Full-Stack Development',
         description:
           'End-to-end packages covering frontend, backend, and deployment for complete web solutions.',
-        link: '/contact?service=full-stack-development',
+        link: '/services/full-stack-development',
       },
       {
         id: 'database-integration',
