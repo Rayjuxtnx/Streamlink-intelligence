@@ -49,6 +49,12 @@
       "imageHint": "rental management"
     },
     {
+      "id": "project-school-management",
+      "description": "School Management System",
+      "imageUrl": "https://images.unsplash.com/photo-1580582932707-520aed93a94d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlZHVjYXRpb24lMjBkYXNoYm9hcmR8ZW58MHx8fHwxNzY4NDMzMTA5fDA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "education dashboard"
+    },
+    {
       "id": "project-network-monitoring",
       "description": "AI-Powered Network Monitoring",
       "imageUrl": "https://images.unsplash.com/photo-1762768736724-443ee6a18e6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxuZXR3b3JrJTIwbW9uaXRvcmluZ3xlbnwwfHx8fDE3NjgzMzI1MjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
