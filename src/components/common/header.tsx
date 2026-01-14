@@ -8,11 +8,12 @@ import {
   SheetContent,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { Menu, Mountain } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -43,8 +44,8 @@ export function Header() {
        {isScrolled && <div className="absolute inset-0 w-full h-full header-scrolled-bg -z-10" />}
       <div className="container flex h-14 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <Mountain className="h-6 w-6 text-primary" />
-          <span className="hidden font-bold sm:inline-block">Streamlink</span>
+          {/* Replace with your logo */}
+          <Image src="https://placehold.co/120x40/212529/98FF98?text=Streamlink" alt="Streamlink Logo" width={120} height={40} />
         </Link>
         <nav className="hidden flex-1 items-center space-x-6 text-sm font-medium md:flex">
           {navLinks.map((link) => (
@@ -77,8 +78,7 @@ export function Header() {
             <SheetContent side="right">
               <div className="p-4">
                 <Link href="/" className="mr-6 flex items-center space-x-2 mb-6">
-                  <Mountain className="h-6 w-6 text-primary" />
-                  <span className="font-bold">Streamlink</span>
+                  <Image src="https://placehold.co/120x40/212529/98FF98?text=Streamlink" alt="Streamlink Logo" width={120} height={40} />
                 </Link>
                 <nav className="flex flex-col space-y-2">
                   {navLinks.map((link) => (
