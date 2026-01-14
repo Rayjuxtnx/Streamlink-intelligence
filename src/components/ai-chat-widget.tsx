@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -86,6 +87,12 @@ export function AiChatWidget() {
 
   return (
     <>
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-background/20 backdrop-blur-sm"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
       <div
         className={cn(
           'fixed bottom-4 right-4 z-50 transition-transform duration-300 ease-in-out',
