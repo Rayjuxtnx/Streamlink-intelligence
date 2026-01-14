@@ -254,7 +254,7 @@ export async function serviceAssistant(
   
   if (selection === 'find_us') {
     return {
-      message: 'You can find us at KASNEB Towers 2. Here is our location on Google Maps.',
+      message: 'You can find us at CPA Centre, Room 16A, on Thika Road. Here is our location on Google Maps.',
       map: true,
       options: [{ id: 'main_menu', display: 'Back to Main Menu' }],
     };
@@ -263,7 +263,7 @@ export async function serviceAssistant(
   if (selection === 'contact_info') {
     return {
       message:
-        'To get a quote, book a service, or for any other inquiries, please reach out to us through our contact page.\n\n- Phone: +254 700 167 972\n- Email: enterprise@streamlink-intel.com',
+        'To get a quote, book a service, or for any other inquiries, please reach out to us through our contact page.\n\n- Phone: +254 700 167 972\n- Email: enterprise@streamlink-intel.com\n- Location: CPA Centre, Thika Road, Room 16A, Nairobi',
       link: '/contact',
       linkText: 'Go to Contact Page',
       options: [{ id: 'main_menu', display: 'Back to Main Menu' }],

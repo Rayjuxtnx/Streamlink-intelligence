@@ -66,6 +66,15 @@ export default function ContactPage() {
                       </a>
                     </div>
                   </div>
+                   <div className="flex items-center gap-4">
+                    <MapPin className="h-5 w-5 text-primary" />
+                    <div className="text-sm">
+                      <p className="font-semibold">Our Location:</p>
+                      <p className="text-muted-foreground">
+                        CPA Centre, Thika Road, Room 16A, Nairobi
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 <div className="mt-4 pt-4 border-t">
                   <p className="text-sm font-semibold">Response Time:</p>
@@ -93,7 +102,7 @@ export default function ContactPage() {
             <CardContent className="p-2">
               <div className="aspect-video w-full rounded-md overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.864391621943!2d36.85848967496561!3d-1.2538189987349138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f143c7b741513%3A0x906841708d675683!2sKASNEB%20Towers%202!5e0!3m2!1sen!2ske!4v1719586938335!5m2!1sen!2ske"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.864391621943!2d36.85848967496561!3d-1.2538189987349138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f143c7b741513%3A0x906841708d675683!2sCPA%20Centre!5e0!3m2!1sen!2ske!4v1720612345678!5m2!1sen!2ske"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
