@@ -154,7 +154,7 @@ const serviceSections = [
         title: 'SEO',
         description:
           'Optimizing your website to rank higher in search engine results, increasing organic traffic and online visibility.',
-        link: '/contact?service=seo',
+        link: '/services/seo',
       },
       {
         id: 'sem',
