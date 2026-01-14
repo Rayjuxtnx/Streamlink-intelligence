@@ -104,7 +104,7 @@ const serviceSections = [
         title: 'Networking Solutions',
         description:
           'Building and maintaining robust and reliable network infrastructures to ensure seamless connectivity and performance.',
-        link: '/contact?service=networking-solutions',
+        link: '/services/networking-solutions',
       },
     ],
   },
