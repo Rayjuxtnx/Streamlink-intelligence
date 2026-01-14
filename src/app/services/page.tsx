@@ -162,7 +162,7 @@ const serviceSections = [
         title: 'Search Engine Marketing (SEM)',
         description:
           'Driving targeted traffic and generating leads through paid search engine advertising campaigns.',
-        link: '/contact?service=sem',
+        link: '/services/sem',
       },
     ],
   },
