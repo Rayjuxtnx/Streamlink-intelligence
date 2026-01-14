@@ -27,14 +27,6 @@ const enterpriseContactSchema = z.object({
 
 type EnterpriseContactFormValues = z.infer<typeof enterpriseContactSchema>;
 
-// Dummy server action
-async function submitForm(data: EnterpriseContactFormValues) {
-  console.log('New enterprise inquiry submission:', data);
-  // Simulate network delay
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  // In a real app, you would handle form submission here
-}
-
 export function EnterpriseContactForm() {
   const { toast } = useToast();
   const [isPending, startTransition] = useTransition();
@@ -52,13 +44,24 @@ export function EnterpriseContactForm() {
   const onSubmit = (data: EnterpriseContactFormValues) => {
     startTransition(async () => {
       try {
-        await submitForm(data);
-        toast({
-          title: 'Inquiry Submitted!',
-          description:
-            'Thank you. Our executive team will review your inquiry and respond shortly.',
+        const response = await fetch('https://formspree.io/f/xqeeapey', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
         });
-        form.reset();
+
+        if (response.ok) {
+            toast({
+              title: 'Inquiry Submitted!',
+              description:
+                'Thank you. Our executive team will review your inquiry and respond shortly.',
+            });
+            form.reset();
+        } else {
+            throw new Error('Form submission failed');
+        }
       } catch (error) {
         toast({
           variant: 'destructive',
