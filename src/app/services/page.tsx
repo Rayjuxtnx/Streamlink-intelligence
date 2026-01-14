@@ -90,7 +90,7 @@ const serviceSections = [
         title: 'WiFi Billing System',
         description:
           'Automated billing and management for WiFi hotspot providers, including voucher generation and payment integration.',
-        link: '/contact?service=wifi-billing',
+        link: '/services/wifi-billing',
       },
     ],
   },
