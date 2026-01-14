@@ -6,19 +6,29 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const projects = [
   {
     id: 'project-kawady',
     title: 'Kawady Mildsteel Company',
     description:
-      'Developed a professional website for a leading mildsteel company offering welding and fabrication services. The site showcases their portfolio and facilitates customer inquiries.',
-    tags: ['React', 'Next.js', 'Tailwind CSS', 'Formspree'],
+      'Web Developer & Digital Consultant. Developed a professional website for a leading mildsteel company offering welding and fabrication services in Kenya and the USA. The site showcases their portfolio, services, and facilitates customer inquiries.',
+    tags: ['React', 'Next.js', 'Tailwind CSS', 'Node.js', 'Formspree'],
+    link: '#',
+  },
+  {
+    id: 'project-seo-scout',
+    title: 'SEO Scout & Digital Skills Hub',
+    description:
+      'Creator & Full-Stack Developer. Developed a comprehensive platform combining a live SEO tracking tool with a digital skills educational hub. The tool provides real-time SEO analytics, while the educational section offers courses on digital marketing.',
+    tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel', 'SEO APIs'],
+    link: '#',
   },
   {
     id: 'project-network-monitoring',
@@ -26,6 +36,7 @@ const projects = [
     description:
       'A predictive analytics platform that uses machine learning to anticipate network failures and optimize performance in real-time for a major telecommunications client.',
     tags: ['Machine Learning', 'SDN', 'Big Data', 'Python'],
+    link: '#',
   },
   {
     id: 'project-kubernetes',
@@ -33,6 +44,7 @@ const projects = [
     description:
       'Developed a unified container orchestration platform across AWS, Azure, and GCP, enabling seamless application deployment and scaling for a global enterprise.',
     tags: ['Kubernetes', 'Go', 'Multi-Cloud', 'DevOps'],
+    link: '#',
   },
   {
     id: 'project-iot-agriculture',
@@ -40,6 +52,7 @@ const projects = [
     description:
       'An end-to-end IoT solution with custom sensors and a data analytics dashboard to optimize crop yields and water usage for a large-scale agricultural business.',
     tags: ['IoT', 'React', 'Node.js', 'MQTT'],
+    link: '#',
   },
   {
     id: 'project-quantum-encryption',
@@ -47,6 +60,7 @@ const projects = [
     description:
       'Implemented next-generation cryptographic protocols to secure sensitive data for a financial institution, preparing their systems for the quantum computing era.',
     tags: ['Cybersecurity', 'Cryptography', 'Go', 'Java'],
+    link: '#',
   },
 ];
 
@@ -94,15 +108,19 @@ export default function ProjectsPage() {
                       {project.description}
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="flex-grow"></CardContent>
-                  <CardFooter>
-                    <div className="flex flex-wrap gap-2">
+                  <CardContent className="flex-grow">
+                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag) => (
                         <Badge key={tag} variant="secondary">
                           {tag}
                         </Badge>
                       ))}
                     </div>
+                  </CardContent>
+                  <CardFooter>
+                    <Button asChild variant="link" className='text-primary'>
+                        <Link href={project.link}>View Project &rarr;</Link>
+                    </Button>
                   </CardFooter>
                 </Card>
               );
