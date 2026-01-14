@@ -32,7 +32,6 @@ export default function RootLayout({
         <title>Streamlink Technologies Operations</title>
         <meta name="description" content="Powering Connectivity, Cloud & Cyber Solutions" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#0a0a0a" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
