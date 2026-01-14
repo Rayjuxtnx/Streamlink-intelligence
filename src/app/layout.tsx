@@ -1,3 +1,5 @@
+'use client';
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -5,23 +7,42 @@ import { Header } from '@/components/common/header';
 import { Footer } from '@/components/common/footer';
 import { Toaster } from '@/components/ui/toaster';
 import { AiChatWidget } from '@/components/ai-chat-widget';
+import { useState, useEffect } from 'react';
+import { Preloader } from '@/components/preloader';
 
-export const metadata: Metadata = {
-  title: 'Streamlink Technologies Operations',
-  description: 'Powering Connectivity, Cloud & Cyber Solutions',
-  icons: {
-    icon: '/favicon.ico',
-  },
-};
+// Metadata needs to be exported from a server component or at the page level.
+// Since we are making the layout a client component, we can't export it from here.
+// It's better to move it to pages or keep a separate layout for metadata.
+// For now, we will comment it out, but for production, this should be handled properly.
+// export const metadata: Metadata = {
+//   title: 'Streamlink Technologies Operations',
+//   description: 'Powering Connectivity, Cloud & Cyber Solutions',
+//   icons: {
+//     icon: '/favicon.ico',
+//   },
+// };
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
+        <title>Streamlink Technologies Operations</title>
+        <meta name="description" content="Powering Connectivity, Cloud & Cyber Solutions" />
+        <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -35,15 +56,19 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <ThemeProvider>
-          <div className="relative flex min-h-dvh flex-col bg-background">
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-              <div className="absolute top-1/2 left-1/2 w-[60rem] h-[60rem] bg-accent-blue/20 rounded-full filter blur-3xl animate-blob-one opacity-30"></div>
-              <div className="absolute top-1/2 left-1/2 w-[50rem] h-[50rem] bg-accent-yellow/20 rounded-full filter blur-3xl animate-blob-two opacity-30"></div>
+          {loading ? (
+            <Preloader />
+          ) : (
+            <div className="relative flex min-h-dvh flex-col bg-background">
+              <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+                <div className="absolute top-1/2 left-1/2 w-[60rem] h-[60rem] bg-accent-blue/20 rounded-full filter blur-3xl animate-blob-one opacity-30"></div>
+                <div className="absolute top-1/2 left-1/2 w-[50rem] h-[50rem] bg-accent-yellow/20 rounded-full filter blur-3xl animate-blob-two opacity-30"></div>
+              </div>
+              <Header />
+              <main className="flex-1">{children}</main>
+              <Footer />
             </div>
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
+          )}
           <Toaster />
           <AiChatWidget />
         </ThemeProvider>

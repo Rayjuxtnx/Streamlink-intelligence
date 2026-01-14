@@ -144,6 +144,14 @@ export default {
             transform: 'translateY(-1px)',
           },
         },
+        'preloader-pulse-outer': {
+            '0%, 100%': { transform: 'scale(0.8)', opacity: '0.5' },
+            '50%': { transform: 'scale(1.1)', opacity: '0.2' },
+        },
+        'preloader-pulse-inner': {
+            '0%, 100%': { transform: 'scale(1)', opacity: '0.4' },
+            '50%': { transform: 'scale(0.9)', opacity: '0.7' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -155,6 +163,8 @@ export default {
         'gradient-animation': 'gradient-animation 10s ease infinite',
         'glow': 'glow 6s ease-in-out infinite',
         'glow-subtle': 'glow-subtle 8s ease-in-out infinite',
+        'preloader-pulse-outer': 'preloader-pulse-outer 3s infinite ease-in-out',
+        'preloader-pulse-inner': 'preloader-pulse-inner 3s infinite ease-in-out -1.5s',
       },
     },
   },
