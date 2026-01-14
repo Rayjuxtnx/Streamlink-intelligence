@@ -208,7 +208,7 @@ const serviceAssistantFlow = ai.defineFlow(
     const { response } = await ai.generate({
       model: 'googleai/gemini-2.5-flash',
       prompt: history,
-      system: prompt.config.system,
+      system: prompt.system,
     });
     return response.text;
   }
