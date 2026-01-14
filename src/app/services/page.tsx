@@ -1,3 +1,4 @@
+
 import {
   Card,
   CardContent,
@@ -12,6 +13,7 @@ import {
   Globe,
   Shield,
   Database,
+  CheckCircle,
 } from 'lucide-react';
 
 const services = [
@@ -21,6 +23,12 @@ const services = [
     title: 'ISP & Network Services',
     description:
       'We provide enterprise-grade internet services and network infrastructure design, implementation, and management to ensure your business stays connected and performs optimally.',
+    details: [
+      'High-speed fiber optic and wireless connectivity.',
+      'Software-Defined Networking (SD-WAN) for optimized performance.',
+      '24/7 network monitoring and proactive maintenance.',
+      'Custom network design for scalability and security.',
+    ],
   },
   {
     id: 'cloud',
@@ -28,6 +36,12 @@ const services = [
     title: 'Cloud Computing Solutions',
     description:
       'Our scalable cloud services include IaaS, PaaS, and SaaS solutions, offering flexible, secure, and cost-effective hosting for your applications and data.',
+    details: [
+      'Multi-cloud strategy and implementation (AWS, Azure, GCP).',
+      'Serverless architecture for cost-efficient scaling.',
+      'Containerization with Docker and Kubernetes.',
+      'Automated backup and disaster recovery solutions.',
+    ],
   },
   {
     id: 'cybersecurity',
@@ -35,6 +49,12 @@ const services = [
     title: 'Cybersecurity & Risk Management',
     description:
       'Protect your digital assets with our comprehensive cybersecurity services, including threat analysis, vulnerability assessments, and proactive defense strategies.',
+    details: [
+      'Managed Security Operations Center (SOC) as a Service.',
+      'Advanced threat detection and response (EDR/XDR).',
+      'Penetration testing and vulnerability management.',
+      'Compliance and regulatory adherence (e.g., GDPR, HIPAA).',
+    ],
   },
   {
     id: 'web-development',
@@ -42,6 +62,12 @@ const services = [
     title: 'Web Development',
     description:
       'From corporate websites to complex e-commerce platforms, we build responsive, fast, and secure web solutions tailored to your brand and business goals.',
+    details: [
+      'Custom front-end and back-end development.',
+      'Progressive Web App (PWA) and mobile-first design.',
+      'Content Management System (CMS) implementation and customization.',
+      'API design and integration for seamless connectivity.',
+    ],
   },
   {
     id: 'system-development',
@@ -49,6 +75,12 @@ const services = [
     title: 'System & Software Development',
     description:
       'We develop custom software and enterprise systems that streamline your operations, improve efficiency, and provide a competitive advantage.',
+    details: [
+      'Enterprise Resource Planning (ERP) and Customer Relationship Management (CRM) systems.',
+      'AI and Machine Learning model integration.',
+      'Agile development methodologies for rapid delivery.',
+      'Legacy system modernization and migration.',
+    ],
   },
   {
     id: 'consulting',
@@ -56,6 +88,12 @@ const services = [
     title: 'IT Consulting & Support',
     description:
       'Our expert consultants provide strategic IT guidance, from infrastructure planning to digital transformation, backed by reliable 24/7 technical support.',
+    details: [
+      'IT roadmap and technology strategy development.',
+      'Digital transformation and change management.',
+      'Project management and delivery oversight.',
+      'Dedicated helpdesk and on-site support.',
+    ],
   },
 ];
 
@@ -73,24 +111,41 @@ export default function ServicesPage() {
       </section>
 
       <section className="py-16 md:py-24">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <Card key={service.id} id={service.id} className="flex flex-col hover:shadow-lg transition-all duration-300 hover:border-primary/50 hover:-translate-y-1">
-                <CardHeader>
-                  <div className="flex items-center gap-4">
-                    <div className="bg-primary/10 text-primary p-3 rounded-md flex-shrink-0">
-                      <service.icon className="h-8 w-8" />
-                    </div>
-                    <CardTitle>{service.title}</CardTitle>
+        <div className="container space-y-20">
+          {services.map((service, index) => (
+            <div
+              key={service.id}
+              id={service.id}
+              className="grid md:grid-cols-2 gap-12 items-center"
+            >
+              <div className={index % 2 === 1 ? 'md:order-2' : ''}>
+                <div className="mb-4 flex items-center gap-4">
+                   <div className="bg-primary/10 text-primary p-3 rounded-md flex-shrink-0">
+                    <service.icon className="h-8 w-8" />
                   </div>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <CardDescription>{service.description}</CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                  <h2 className="text-3xl font-bold font-headline">{service.title}</h2>
+                </div>
+                <p className="text-muted-foreground text-lg mb-6">{service.description}</p>
+                <ul className="space-y-3">
+                  {service.details.map((detail, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                      <span className="text-muted-foreground">{detail}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={index % 2 === 1 ? 'md:order-1' : ''}>
+                <Card className="bg-secondary/50 border-primary/20">
+                  <CardContent className="p-8">
+                     <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
+                        <service.icon className="h-24 w-24 text-muted-foreground/30" />
+                     </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </>
