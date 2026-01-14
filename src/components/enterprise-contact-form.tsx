@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useForm } from 'react-hook-form';
@@ -18,11 +19,10 @@ import { useToast } from '@/hooks/use-toast';
 import { useTransition } from 'react';
 
 const enterpriseContactSchema = z.object({
-  fullName: z.string().min(2, 'Full name must be at least 2 characters.'),
-  businessEmail: z.string().email('Invalid email address.'),
-  projectDetails: z
-    .string()
-    .min(10, 'Details must be at least 10 characters.'),
+  name: z.string().min(2, 'Your name must be at least 2 characters.'),
+  email: z.string().email('Invalid email address.'),
+  phone: z.string().min(10, 'Please enter a valid phone number.'),
+  overview: z.string().min(10, 'Please provide at least a brief overview.'),
 });
 
 type EnterpriseContactFormValues = z.infer<typeof enterpriseContactSchema>;
@@ -42,9 +42,10 @@ export function EnterpriseContactForm() {
   const form = useForm<EnterpriseContactFormValues>({
     resolver: zodResolver(enterpriseContactSchema),
     defaultValues: {
-      fullName: '',
-      businessEmail: '',
-      projectDetails: '',
+      name: '',
+      email: '',
+      phone: '',
+      overview: '',
     },
   });
 
@@ -74,12 +75,12 @@ export function EnterpriseContactForm() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
-          name="fullName"
+          name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Full Name</FormLabel>
+              <FormLabel>Your Name</FormLabel>
               <FormControl>
-                <Input placeholder="e.g., Jane Doe" {...field} />
+                <Input placeholder="Your Name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -87,16 +88,12 @@ export function EnterpriseContactForm() {
         />
         <FormField
           control={form.control}
-          name="businessEmail"
+          name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Business Email</FormLabel>
+              <FormLabel>Your Email</FormLabel>
               <FormControl>
-                <Input
-                  placeholder="e.g., jane.doe@company.com"
-                  type="email"
-                  {...field}
-                />
+                <Input placeholder="Your Email" type="email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -104,13 +101,26 @@ export function EnterpriseContactForm() {
         />
         <FormField
           control={form.control}
-          name="projectDetails"
+          name="phone"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Project Details or Inquiry</FormLabel>
+              <FormLabel>Phone Number</FormLabel>
+              <FormControl>
+                <Input placeholder="Your Phone Number" type="tel" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="overview"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Brief overview of your needs</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Please provide a brief overview of your needs..."
+                  placeholder="Brief overview of your needs"
                   className="min-h-[120px]"
                   {...field}
                 />
