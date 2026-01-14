@@ -118,7 +118,7 @@ const serviceSections = [
         title: 'Cyber Security Consulting',
         description:
           'Protecting your digital assets with comprehensive security services, from identifying weaknesses to responding to threats.',
-        link: '/contact?service=cyber-security-consulting',
+        link: '/services/cyber-security-consulting',
       },
     ],
   },
