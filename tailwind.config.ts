@@ -1,3 +1,4 @@
+
 import type { Config } from 'tailwindcss';
 
 export default {
@@ -107,6 +108,28 @@ export default {
           '50%': { backgroundPosition: '100% 50%' },
           '100%': { backgroundPosition: '0% 50%' },
         },
+        'glow': {
+          '0%, 100%': {
+            textShadow:
+              '0 0 5px hsl(var(--primary) / 0.5), 0 0 10px hsl(var(--primary) / 0.5), 0 0 20px hsl(var(--primary) / 0.5)',
+            transform: 'scale(1)',
+          },
+          '50%': {
+            textShadow:
+              '0 0 10px hsl(var(--primary) / 0.7), 0 0 20px hsl(var(--primary) / 0.7), 0 0 40px hsl(var(--primary) / 0.7)',
+            transform: 'scale(1.01)',
+          },
+        },
+        'glow-subtle': {
+          '0%, 100%': {
+            textShadow: '0 0 2px hsl(var(--primary-foreground) / 0.3)',
+            transform: 'translateY(0)',
+          },
+          '50%': {
+            textShadow: '0 0 5px hsl(var(--primary-foreground) / 0.5)',
+            transform: 'translateY(-1px)',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -114,6 +137,8 @@ export default {
         'blob-one': 'blob-one 20s infinite ease-in-out',
         'blob-two': 'blob-two 25s infinite ease-in-out',
         'gradient-animation': 'gradient-animation 10s ease infinite',
+        'glow': 'glow 6s ease-in-out infinite',
+        'glow-subtle': 'glow-subtle 8s ease-in-out infinite',
       },
     },
   },

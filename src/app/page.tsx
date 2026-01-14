@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -74,7 +75,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative w-full h-[70vh] md:h-[80vh] flex items-center justify-center">
+      <section className="relative w-full h-[70vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
         {heroImage && (
           <Image
             src={heroImage.imageUrl}
@@ -88,10 +89,10 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
         <div className="absolute inset-0 bg-black/70"></div>
         <div className="container relative z-10 text-center text-primary-foreground">
-          <h1 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl font-headline">
+          <h1 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl font-headline animate-glow">
             STREAMLINK TECHNOLOGIES OPERATIONS
           </h1>
-          <p className="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-primary-foreground/80">
+          <p className="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-primary-foreground/80 animate-glow-subtle">
             Delivering ISP, Cloud Computing, Cybersecurity, and Advanced IT
             Solutions for Modern Businesses.
           </p>
