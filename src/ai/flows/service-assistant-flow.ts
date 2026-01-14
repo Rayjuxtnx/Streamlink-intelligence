@@ -20,42 +20,77 @@ const serviceSections = [
         description:
           'Creating beautiful, responsive, and user-friendly interfaces.',
         link: '/services/frontend-development',
+        packages: [
+            { name: 'Basic', price: 'Ksh 20,000 – 50,000' },
+            { name: 'Standard', price: 'Ksh 60,000 – 120,000' },
+            { name: 'Premium', price: 'Ksh 150,000 – 300,000+' }
+        ]
       },
       {
         id: 'backend-development',
         title: 'Backend Development',
         description: 'Building robust and scalable server-side applications.',
         link: '/services/backend-development',
+        packages: [
+            { name: 'Basic', price: 'Ksh 40,000 – 80,000' },
+            { name: 'Standard', price: 'Ksh 100,000 – 180,000' },
+            { name: 'Premium', price: 'Ksh 200,000 – 350,000+' }
+        ]
       },
       {
         id: 'full-stack-development',
         title: 'Full-Stack Development',
         description: 'End-to-end development for complete web solutions.',
         link: '/services/full-stack-development',
+        packages: [
+            { name: 'Basic', price: 'Ksh 60,000 – 100,000' },
+            { name: 'Standard', price: 'Ksh 120,000 – 200,000' },
+            { name: 'Premium', price: 'Ksh 250,000 – 400,000+' }
+        ]
       },
       {
         id: 'database-integration',
         title: 'Database Integration',
         description: 'Efficient and secure database management.',
         link: '/services/database-integration',
+         packages: [
+            { name: 'Basic', price: 'Ksh 20,000 – 50,000' },
+            { name: 'Standard', price: 'Ksh 60,000 – 120,000' },
+            { name: 'Premium', price: 'Ksh 150,000 – 300,000+' }
+        ]
       },
       {
         id: 'api-development',
         title: 'API Development & Integration',
         description: 'Connecting services and automating workflows.',
         link: '/services/api-development',
+         packages: [
+            { name: 'Basic', price: 'Ksh 8,000 – 20,000' },
+            { name: 'Standard', price: 'Ksh 25,000 – 60,000' },
+            { name: 'Premium', price: 'Ksh 70,000 – 150,000+' }
+        ]
       },
       {
         id: 'system-development',
         title: 'System Development',
         description: 'Custom software systems tailored to business needs.',
         link: '/services/system-development',
+         packages: [
+            { name: 'Basic', price: 'Ksh 40,000 – 90,000' },
+            { name: 'Standard', price: 'Ksh 100,000 – 250,000' },
+            { name: 'Premium', price: 'Ksh 300,000 – 700,000+' }
+        ]
       },
       {
         id: 'wifi-billing',
         title: 'WiFi Billing System',
         description: 'Automated billing and management for WiFi hotspots.',
         link: '/services/wifi-billing',
+         packages: [
+            { name: 'Basic', price: 'KSh 150,000 – 250,000' },
+            { name: 'Standard', price: 'KSh 300,000 – 500,000' },
+            { name: 'Premium', price: 'KSh 600,000 – 1,200,000' }
+        ]
       },
     ],
   },
@@ -68,6 +103,12 @@ const serviceSections = [
         title: 'Networking Solutions',
         description: 'Robust network infrastructures for seamless connectivity.',
         link: '/services/networking-solutions',
+        packages: [
+            { name: 'Network Design & Setup', price: 'Contact for Quote' },
+            { name: 'Router & Switch Config', price: 'Contact for Quote' },
+            { name: 'Wi-Fi Optimization', price: 'Contact for Quote' },
+            { name: 'Network Security', price: 'Contact for Quote' }
+        ]
       },
     ],
   },
@@ -80,6 +121,12 @@ const serviceSections = [
         title: 'Cyber Security Consulting',
         description: 'Protecting digital assets from threats.',
         link: '/services/cyber-security-consulting',
+        packages: [
+            { name: 'Vulnerability Assessments', price: 'Contact for Quote' },
+            { name: 'Penetration Testing', price: 'Contact for Quote' },
+            { name: 'Security Audits', price: 'Contact for Quote' },
+            { name: 'Incident Response', price: 'Contact for Quote' }
+        ]
       },
     ],
   },
@@ -92,6 +139,11 @@ const serviceSections = [
         title: 'ML & AI',
         description: 'Building smart applications with AI.',
         link: '/services/ml-ai',
+        packages: [
+            { name: 'Basic', price: 'Ksh 40,000 – 100,000' },
+            { name: 'Standard', price: 'Ksh 120,000 – 300,000' },
+            { name: 'Premium', price: 'Ksh 350,000 – 900,000+' }
+        ]
       },
     ],
   },
@@ -104,18 +156,33 @@ const serviceSections = [
         title: 'Digital Marketing',
         description: 'Driving brand growth through strategic online campaigns.',
         link: '/services/digital-marketing',
+         packages: [
+            { name: 'Basic', price: 'Ksh 10,000 – 25,000/month' },
+            { name: 'Standard', price: 'Ksh 30,000 – 70,000/month' },
+            { name: 'Premium', price: 'Ksh 80,000 – 200,000+/month' }
+        ]
       },
       {
         id: 'seo',
         title: 'SEO',
         description: 'Optimizing your website to rank higher in search results.',
         link: '/services/seo',
+         packages: [
+            { name: 'Basic', price: 'Ksh 15,000 - 30,000/month' },
+            { name: 'Standard', price: 'Ksh 35,000 - 60,000/month' },
+            { name: 'Premium', price: 'Ksh 70,000+/month' }
+        ]
       },
       {
         id: 'sem',
         title: 'Search Engine Marketing (SEM)',
         description: 'Driving targeted traffic with paid search campaigns.',
         link: '/services/sem',
+         packages: [
+            { name: 'Basic', price: 'Ksh 10,000 – 25,000/month' },
+            { name: 'Standard', price: 'Ksh 30,000 – 60,000/month' },
+            { name: 'Premium', price: 'Ksh 70,000 – 150,000+/month' }
+        ]
       },
     ],
   },
@@ -128,12 +195,20 @@ const serviceSections = [
         title: 'Event DJ',
         description: 'Professional music selection for special occasions.',
         link: '/services/event-dj',
+        packages: [
+            { name: 'Weddings & Receptions', price: 'Contact for Quote' },
+            { name: 'Corporate Events', price: 'Contact for Quote' },
+            { name: 'Private Parties', price: 'Contact for Quote' }
+        ]
       },
       {
         id: 'event-decoration',
         title: 'Event Decoration',
         description: 'Creative venue decoration for memorable experiences.',
         link: '/contact?service=event-decoration',
+        packages: [
+            { name: 'Event Decoration', price: 'Contact for Quote' }
+        ]
       },
     ],
   },
@@ -146,7 +221,7 @@ const OptionSchema = z.object({
 export type Option = z.infer<typeof OptionSchema>;
 
 const ServiceAssistantInputSchema = z.object({
-  selection: z.string().optional().describe('The user\'s menu selection.'),
+  selection: z.string().optional().describe("The user's menu selection."),
 });
 export type ServiceAssistantInput = z.infer<typeof ServiceAssistantInputSchema>;
 
@@ -217,10 +292,13 @@ export async function serviceAssistant(
       for (const section of serviceSections) {
           const service = section.services.find(s => s.id === serviceId);
           if (service) {
+              const packagePrices = service.packages?.map(p => `- ${p.name}: ${p.price}`).join('\n') || 'Pricing is available upon request.';
+              const message = `${service.title}: ${service.description}\n\nHere are the available packages:\n${packagePrices}`;
+              
               return {
-                  message: `${service.title}: ${service.description}`,
+                  message: message,
                   link: service.link,
-                  linkText: 'View Details',
+                  linkText: 'View More Details',
                   options: [{ id: `category_${section.id}`, display: `Back to ${section.title}` }]
               }
           }
