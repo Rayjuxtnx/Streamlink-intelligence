@@ -205,11 +205,12 @@ const serviceAssistantFlow = ai.defineFlow(
     outputSchema: ServiceAssistantOutputSchema,
   },
   async ({ history }) => {
-    const { response } = await ai.generate({
+    const chat = ai.chat({
       model: 'googleai/gemini-2.5-flash',
-      prompt: history,
+      history,
       system: prompt.system,
     });
+    const response = await chat.send(history[history.length -1].parts[0].text);
     return response.text;
   }
 );
