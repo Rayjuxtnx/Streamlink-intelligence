@@ -288,21 +288,21 @@ export async function serviceAssistant(
   }
   
   if (selection.startsWith('service_')) {
-      const serviceId = selection.replace('service_', '');
-      for (const section of serviceSections) {
-          const service = section.services.find(s => s.id === serviceId);
-          if (service) {
-              const packagePrices = service.packages?.map(p => `- ${p.name}: ${p.price}`).join('\n') || 'Pricing is available upon request.';
-              const message = `${service.title}: ${service.description}\n\nHere are the available packages:\n${packagePrices}`;
-              
-              return {
-                  message: message,
-                  link: service.link,
-                  linkText: 'View More Details',
-                  options: [{ id: `category_${section.id}`, display: `Back to ${section.title}` }]
-              }
-          }
-      }
+    const serviceId = selection.replace('service_', '');
+    for (const section of serviceSections) {
+        const service = section.services.find(s => s.id === serviceId);
+        if (service) {
+            const packagePrices = service.packages?.map(p => `- ${p.name}: ${p.price}`).join('\n') || 'Pricing is available upon request. Please contact us for more details.';
+            const message = `${service.title}\n\n${service.description}\n\nHere are the available packages:\n${packagePrices}`;
+            
+            return {
+                message: message,
+                link: service.link,
+                linkText: 'View More Details',
+                options: [{ id: `category_${section.id}`, display: `Back to ${section.title}` }]
+            };
+        }
+    }
   }
 
   return {
