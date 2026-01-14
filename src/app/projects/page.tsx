@@ -7,9 +7,9 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
@@ -44,7 +44,7 @@ const projects = [
     title: 'Rental Management System',
     description: 'Full-Stack Developer. Engineered a comprehensive rental management system from the ground up. The platform features tenant and property management, automated payment processing, and maintenance request tracking to streamline operations for landlords.',
     tags: ['Next.js', 'React', 'Node.js', 'MongoDB', 'Stripe API'],
-    link: '#',
+    link: 'https://modern-christian.vercel.app/',
   },
   {
     id: 'project-school-management',
