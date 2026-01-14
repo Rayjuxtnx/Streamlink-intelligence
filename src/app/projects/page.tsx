@@ -37,7 +37,7 @@ const projects = [
     title: 'Drone Tracking System',
     description: 'Full-Stack Developer. Developed a real-time drone tracking system with a live map interface. The system monitors drone fleet status, flight paths, and telemetry data, providing a centralized dashboard for operators.',
     tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Mapbox', 'Vercel'],
-    link: '#',
+    link: 'https://drone-rust.vercel.app/',
   },
   {
     id: 'project-rental-management',
