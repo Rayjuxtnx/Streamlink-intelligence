@@ -54,35 +54,11 @@ const projects = [
     link: '#',
   },
   {
-    id: 'project-network-monitoring',
-    title: 'AI-Powered Network Monitoring',
-    description:
-      'A predictive analytics platform that uses machine learning to anticipate network failures and optimize performance in real-time for a major telecommunications client.',
-    tags: ['Machine Learning', 'SDN', 'Big Data', 'Python'],
-    link: '#',
-  },
-  {
     id: 'project-kubernetes',
     title: 'Multi-Cloud Kubernetes Platform',
     description:
       'Developed a unified container orchestration platform across AWS, Azure, and GCP, enabling seamless application deployment and scaling for a global enterprise.',
     tags: ['Kubernetes', 'Go', 'Multi-Cloud', 'DevOps'],
-    link: '#',
-  },
-  {
-    id: 'project-iot-agriculture',
-    title: 'IoT Smart Agriculture System',
-    description:
-      'An end-to-end IoT solution with custom sensors and a data analytics dashboard to optimize crop yields and water usage for a large-scale agricultural business.',
-    tags: ['IoT', 'React', 'Node.js', 'MQTT'],
-    link: '#',
-  },
-  {
-    id: 'project-quantum-encryption',
-    title: 'Quantum-Resistant Encryption',
-    description:
-      'Implemented next-generation cryptographic protocols to secure sensitive data for a financial institution, preparing their systems for the quantum computing era.',
-    tags: ['Cybersecurity', 'Cryptography', 'Go', 'Java'],
     link: '#',
   },
 ];
