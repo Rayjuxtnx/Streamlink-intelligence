@@ -82,7 +82,7 @@ const serviceSections = [
         title: 'System Development',
         description:
           'End-to-end design and development of custom software systems tailored to your business needs.',
-        link: '/contact?service=system-development',
+        link: '/services/system-development',
       },
       {
         id: 'wifi-billing',
