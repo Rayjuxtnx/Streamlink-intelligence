@@ -1,4 +1,6 @@
 
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -15,6 +17,12 @@ import {
   Palette,
   Megaphone,
 } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from '@/components/ui/carousel';
+import Autoplay from 'embla-carousel-autoplay';
 
 const services = [
   {
@@ -78,8 +86,35 @@ const whyChooseUs = [
   },
 ];
 
+const leadershipTeam = [
+  {
+    name: 'JOSEPH MULI',
+    role: 'Founder & Director',
+    description:
+      '15+ years in enterprise infrastructure and digital transformation. Former CTO at GlobalNet Solutions.',
+    imageId: 'joseph-muli',
+  },
+  {
+    name: 'Mr Mark',
+    role: 'Lead Network Engineer',
+    description:
+      'Specialized in high-capacity fiber networks, SD-WAN, and IoT infrastructure with 12 years of field experience.',
+    imageId: 'mr-mark',
+  },
+  {
+    name: 'Philip',
+    role: 'Lead Software Engineer & Cloud Security Specialist',
+    description:
+      'A full-stack developer and cloud security expert, specializing in microservices, AI-driven solutions, multi-cloud architecture, and cybersecurity frameworks.',
+    imageId: 'mr-philip',
+  },
+];
+
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'hero');
+  const leadershipImages = PlaceHolderImages.filter((img) =>
+    leadershipTeam.some((person) => person.imageId === img.id)
+  );
 
   return (
     <div className="flex flex-col">
@@ -124,12 +159,16 @@ export default function Home() {
               Powering Connectivity, Cloud & Cyber Solutions
             </h2>
             <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">
-              We offer a comprehensive suite of technology services to empower your business.
+              We offer a comprehensive suite of technology services to empower
+              your business.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="text-center transition-all duration-300 hover:border-primary/50 hover:-translate-y-1 bg-card/60 backdrop-blur-sm">
+              <Card
+                key={index}
+                className="text-center transition-all duration-300 hover:border-primary/50 hover:-translate-y-1 bg-card/60 backdrop-blur-sm"
+              >
                 <CardHeader>
                   <div className="mx-auto bg-primary/10 text-primary p-4 rounded-full w-fit">
                     <service.icon className="h-8 w-8" />
@@ -137,8 +176,14 @@ export default function Home() {
                   <CardTitle className="mt-4">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">{service.description}</p>
-                  <Button variant="link" asChild className="mt-2 text-primary">
+                  <p className="text-muted-foreground">
+                    {service.description}
+                  </p>
+                  <Button
+                    variant="link"
+                    asChild
+                    className="mt-2 text-primary"
+                  >
                     <Link href={service.link}>Learn More &rarr;</Link>
                   </Button>
                 </CardContent>
@@ -148,8 +193,67 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Leadership Section */}
       <section className="py-16 md:py-24">
+        <div className="container">
+          <h2 className="text-3xl font-bold text-center mb-12 font-headline">
+            Meet Our Leadership
+          </h2>
+          <Carousel
+            opts={{
+              loop: true,
+              align: 'start',
+            }}
+            plugins={[
+              Autoplay({
+                delay: 5000,
+                stopOnInteraction: false,
+                stopOnMouseEnter: true,
+              }),
+            ]}
+            className="w-full"
+          >
+            <CarouselContent>
+              {leadershipTeam.map((person, index) => {
+                const image = leadershipImages.find(
+                  (img) => img.id === person.imageId
+                );
+                return (
+                  <CarouselItem
+                    key={index}
+                    className="md:basis-1/2 lg:basis-1/3"
+                  >
+                    <Card className="h-full text-center hover:shadow-lg transition-all duration-300 hover:border-primary/50 hover:-translate-y-1">
+                      <CardContent className="pt-6">
+                        {image && (
+                          <Image
+                            src={image.imageUrl}
+                            alt={`Portrait of ${person.name}`}
+                            width={120}
+                            height={120}
+                            className="rounded-full mx-auto mb-4 border-4 border-primary/20"
+                            data-ai-hint={image.imageHint}
+                          />
+                        )}
+                        <h3 className="text-xl font-bold">{person.name}</h3>
+                        <p className="text-primary font-semibold">
+                          {person.role}
+                        </p>
+                        <p className="text-muted-foreground mt-2 text-sm">
+                          {person.description}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+          </Carousel>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-16 md:py-24 bg-secondary/50">
         <div className="container">
           <h2 className="text-3xl font-bold text-center mb-12 font-headline">
             Why Choose Streamlink
@@ -158,7 +262,7 @@ export default function Home() {
             {whyChooseUs.map((item, index) => (
               <div key={index} className="flex items-start gap-4">
                 <div className="bg-primary text-primary-foreground p-2 rounded-full mt-1">
-                   <CheckCircle className="h-5 w-5" />
+                  <CheckCircle className="h-5 w-5" />
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
@@ -173,8 +277,8 @@ export default function Home() {
       {/* CTA */}
       <section className="relative py-16 md:py-24 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-            <div className="absolute top-1/2 left-1/2 w-[40rem] h-[40rem] bg-primary/10 rounded-full filter blur-3xl animate-blob-three opacity-50"></div>
-            <div className="absolute top-1/2 left-1/2 w-[30rem] h-[30rem] bg-accent-yellow/10 rounded-full filter blur-3xl animate-blob-four opacity-50"></div>
+          <div className="absolute top-1/2 left-1/2 w-[40rem] h-[40rem] bg-primary/10 rounded-full filter blur-3xl animate-blob-three opacity-50"></div>
+          <div className="absolute top-1/2 left-1/2 w-[30rem] h-[30rem] bg-accent-yellow/10 rounded-full filter blur-3xl animate-blob-four opacity-50"></div>
         </div>
         <div className="container text-center relative">
           <h2 className="text-3xl font-bold font-headline">
