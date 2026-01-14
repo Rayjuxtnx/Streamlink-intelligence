@@ -171,8 +171,12 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24">
-        <div className="container text-center">
+      <section className="relative py-16 md:py-24 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+            <div className="absolute top-1/2 left-1/2 w-[40rem] h-[40rem] bg-primary/10 rounded-full filter blur-3xl animate-blob-three opacity-50"></div>
+            <div className="absolute top-1/2 left-1/2 w-[30rem] h-[30rem] bg-accent-yellow/10 rounded-full filter blur-3xl animate-blob-four opacity-50"></div>
+        </div>
+        <div className="container text-center relative">
           <h2 className="text-3xl font-bold font-headline">
             Ready to transform your technology infrastructure?
           </h2>
