@@ -20,17 +20,22 @@ import {
 import { Input } from '@/components/ui/input';
 import { useState, useTransition, useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { serviceAssistant } from '@/ai/flows/service-assistant-flow';
+import {
+  serviceAssistant,
+  type ServiceAssistantOutput,
+  type Option,
+} from '@/ai/flows/service-assistant-flow';
+import Link from 'next/link';
 
 type Message = {
+  id: string;
   role: 'user' | 'model';
-  parts: { text: string }[];
+  content: string | { message: string; options?: Option[], link?: string, linkText?: string };
 };
 
 export function AiChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
-  const [input, setInput] = useState('');
   const [isPending, startTransition] = useTransition();
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
@@ -39,28 +44,41 @@ export function AiChatWidget() {
       scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
     }
   };
+  
+  useEffect(() => {
+    if (isOpen && messages.length === 0) {
+      startTransition(async () => {
+        const response = await serviceAssistant({});
+        setMessages([
+          {
+            id: 'initial',
+            role: 'model',
+            content: response,
+          },
+        ]);
+      });
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim()) return;
-
+  const handleOptionClick = (option: Option) => {
     const userMessage: Message = {
+      id: `user-${messages.length}`,
       role: 'user',
-      parts: [{ text: input }],
+      content: option.display,
     };
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
-    setInput('');
 
     startTransition(async () => {
-      const response = await serviceAssistant({ history: newMessages });
+      const response = await serviceAssistant({ selection: option.id });
       const assistantMessage: Message = {
+        id: `model-${messages.length}`,
         role: 'model',
-        parts: [{ text: response }],
+        content: response,
       };
       setMessages((prev) => [...prev, assistantMessage]);
     });
@@ -109,19 +127,9 @@ export function AiChatWidget() {
             ref={scrollAreaRef}
             className="flex-grow overflow-y-auto space-y-4 pr-3"
           >
-            <div className="flex gap-3 my-4 text-sm">
-              <div className="flex-shrink-0">
-                <Bot className="h-8 w-8 p-1.5 rounded-full bg-primary text-primary-foreground" />
-              </div>
-              <div className="p-3 rounded-lg bg-secondary">
-                <p className="whitespace-pre-wrap">Hello! I'm Link, your AI assistant. I can answer questions about our services or help you find our contact information.
-
-How can I help you today?</p>
-              </div>
-            </div>
             {messages.map((message, index) => (
               <div
-                key={index}
+                key={message.id}
                 className={cn(
                   'flex gap-3 text-sm',
                   message.role === 'user' && 'justify-end'
@@ -140,16 +148,27 @@ How can I help you today?</p>
                       : 'bg-secondary'
                   )}
                 >
-                  <p className="whitespace-pre-wrap">{message.parts[0].text}</p>
+                   {typeof message.content === 'string' ? (
+                     <p className="whitespace-pre-wrap">{message.content}</p>
+                   ) : (
+                     <div>
+                       <p className="whitespace-pre-wrap">{message.content.message}</p>
+                       {message.content.link && message.content.linkText && (
+                         <Button variant="link" asChild className="p-0 h-auto mt-2">
+                           <Link href={message.content.link}>{message.content.linkText}</Link>
+                         </Button>
+                       )}
+                     </div>
+                   )}
                 </div>
-                {message.role === 'user' && (
+                 {message.role === 'user' && (
                   <div className="flex-shrink-0">
                     <User className="h-8 w-8 p-1.5 rounded-full bg-secondary text-secondary-foreground" />
                   </div>
                 )}
               </div>
             ))}
-            {isPending && (
+             {isPending && messages.length > 0 && (
               <div className="flex gap-3 my-4 text-sm">
                 <div className="flex-shrink-0">
                   <Bot className="h-8 w-8 p-1.5 rounded-full bg-primary text-primary-foreground" />
@@ -160,21 +179,12 @@ How can I help you today?</p>
               </div>
             )}
           </CardContent>
-          <CardFooter>
-            <form
-              onSubmit={handleSubmit}
-              className="flex items-center w-full gap-2"
-            >
-              <Input
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask about our services..."
-                disabled={isPending}
-              />
-              <Button type="submit" size="icon" disabled={isPending}>
-                <Send className="h-4 w-4" />
+          <CardFooter className='flex-col items-start gap-2'>
+            {!isPending && typeof messages[messages.length -1]?.content !== 'string' && (messages[messages.length-1]?.content as ServiceAssistantOutput)?.options?.map(option => (
+              <Button key={option.id} variant="outline" className='w-full justify-start' onClick={() => handleOptionClick(option)}>
+                {option.display}
               </Button>
-            </form>
+            ))}
           </CardFooter>
         </Card>
       </div>

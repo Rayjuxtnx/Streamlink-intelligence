@@ -9,7 +9,6 @@
 
 import { z } from 'genkit';
 
-// Simplified service data for the AI prompt.
 const serviceSections = [
   {
     id: 'software-development',
@@ -140,51 +139,96 @@ const serviceSections = [
   },
 ];
 
-const ServiceAssistantInputSchema = z.object({
-  history: z.array(z.any()).describe('The conversation history.'),
+const OptionSchema = z.object({
+  id: z.string(),
+  display: z.string(),
 });
-export type ServiceAssistantInput = z.infer<
-  typeof ServiceAssistantInputSchema
->;
+export type Option = z.infer<typeof OptionSchema>;
 
-const ServiceAssistantOutputSchema = z.string();
-export type ServiceAssistantOutput = z.infer<
-  typeof ServiceAssistantOutputSchema
->;
+const ServiceAssistantInputSchema = z.object({
+  selection: z.string().optional().describe('The user\'s menu selection.'),
+});
+export type ServiceAssistantInput = z.infer<typeof ServiceAssistantInputSchema>;
+
+const ServiceAssistantOutputSchema = z.object({
+  message: z.string().describe('The response message from the assistant.'),
+  options: z.array(OptionSchema).optional().describe('The menu of options for the user.'),
+  link: z.string().optional().describe('A URL link for the user to follow.'),
+  linkText: z.string().optional().describe('The text for the URL link.'),
+});
+export type ServiceAssistantOutput = z.infer<typeof ServiceAssistantOutputSchema>;
+
+const mainMenuOptions: Option[] = [
+  { id: 'all_services', display: 'Explore Our Services' },
+  { id: 'contact_info', display: 'Contact Information' },
+];
 
 export async function serviceAssistant(
   input: ServiceAssistantInput
 ): Promise<ServiceAssistantOutput> {
-  const userMessage = input.history[input.history.length - 1]?.parts[0]?.text.toLowerCase();
+  const selection = input.selection;
 
-  if (!userMessage) {
-    return "I'm sorry, I didn't get that. How can I help you with our services?";
+  if (!selection || selection === 'main_menu') {
+    return {
+      message: "Hello! I'm Link, your AI assistant. How can I help you today?",
+      options: mainMenuOptions,
+    };
+  }
+
+  if (selection === 'contact_info') {
+    return {
+      message:
+        'To get a quote, book a service, or for any other inquiries, please reach out to us through our contact page.\n\n- Phone: +254 700 167 972\n- Email: enterprise@streamlink-intel.com',
+      link: '/contact',
+      linkText: 'Go to Contact Page',
+      options: [{ id: 'main_menu', display: 'Back to Main Menu' }],
+    };
   }
   
-  if (userMessage.includes('hello') || userMessage.includes('hi')) {
-    return "Hello! How can I help you learn about our services today?";
+  if (selection === 'all_services') {
+    const serviceCategoryOptions: Option[] = serviceSections.map(section => ({
+      id: `category_${section.id}`,
+      display: section.title,
+    }));
+    return {
+      message: "Here are our main service categories. Please select one to see more details.",
+      options: [...serviceCategoryOptions, { id: 'main_menu', display: 'Back to Main Menu' }],
+    };
   }
 
-  if (userMessage.includes('all services') || userMessage.includes('what services')) {
-    const allServices = serviceSections.flatMap(section => section.services.map(s => s.title)).join(', ');
-    return `We offer a wide range of services: ${allServices}. You can ask me for details on any of these, or see them all on our services page: /services`;
-  }
+  if (selection.startsWith('category_')) {
+    const categoryId = selection.replace('category_', '');
+    const category = serviceSections.find(s => s.id === categoryId);
 
-  if (userMessage.includes('book') || userMessage.includes('price') || userMessage.includes('consultation') || userMessage.includes('contact')) {
-    return 'To get a quote, book a service, or for any other inquiries, please reach out to us through our contact page. \n\n- Phone: +254 700 167 972\n- Email: enterprise@streamlink-intel.com\n- Or visit: /contact';
-  }
-
-  for (const section of serviceSections) {
-    for (const service of section.services) {
-      if (userMessage.includes(service.title.toLowerCase())) {
-        return `We offer ${service.title}. ${service.description} You can find more details here: ${service.link}`;
-      }
+    if (category) {
+      const serviceOptions: Option[] = category.services.map(service => ({
+        id: `service_${service.id}`,
+        display: service.title,
+      }));
+       return {
+        message: `Here are the services under ${category.title}. Select one for more information.`,
+        options: [...serviceOptions, {id: 'all_services', display: 'Back to Categories'}],
+      };
     }
-     if (userMessage.includes(section.title.toLowerCase())) {
-        const serviceTitles = section.services.map(s => s.title).join(', ');
-        return `Under ${section.title}, we offer the following services: ${serviceTitles}. You can see all of them here: /services#${section.id}`;
+  }
+  
+  if (selection.startsWith('service_')) {
+      const serviceId = selection.replace('service_', '');
+      for (const section of serviceSections) {
+          const service = section.services.find(s => s.id === serviceId);
+          if (service) {
+              return {
+                  message: `${service.title}: ${service.description}`,
+                  link: service.link,
+                  linkText: 'View Details',
+                  options: [{ id: `category_${section.id}`, display: `Back to ${section.title}` }]
+              }
+          }
       }
   }
 
-  return "I can answer questions about Streamlink's services. Try asking me:\n\n- 'What is frontend development?'\n- 'Tell me about all your services.'\n- 'How can I contact you?'";
+  return {
+    message: "I'm sorry, I didn't understand that selection. Let's start over.",
+    options: mainMenuOptions,
+  };
 }
