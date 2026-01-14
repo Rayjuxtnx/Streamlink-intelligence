@@ -176,7 +176,7 @@ const serviceSections = [
         title: 'Event DJ',
         description:
           'Bringing the right vibe to your special occasions with a professional and versatile music selection.',
-        link: '/contact?service=event-dj',
+        link: '/services/event-dj',
       },
       {
         id: 'event-decoration',
