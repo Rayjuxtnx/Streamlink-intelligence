@@ -132,7 +132,7 @@ const serviceSections = [
         title: 'ML & AI',
         description:
           'Leveraging machine learning and artificial intelligence to build smart applications and drive data-driven decisions.',
-        link: '/contact?service=ml-ai-solutions',
+        link: '/services/ml-ai',
       },
     ],
   },
