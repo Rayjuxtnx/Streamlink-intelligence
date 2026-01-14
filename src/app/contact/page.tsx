@@ -71,7 +71,7 @@ export default function ContactPage() {
                     <div className="text-sm">
                       <p className="font-semibold">Our Location:</p>
                       <p className="text-muted-foreground">
-                        CPA Centre, Thika Road, Room 16A, Nairobi
+                        CPA Centre (ICPAK), Thika Road, Room 16A, Nairobi
                       </p>
                     </div>
                   </div>
