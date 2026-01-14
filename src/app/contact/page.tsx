@@ -14,8 +14,12 @@ import {
 export default function ContactPage() {
   return (
     <>
-      <section className="py-16 md:py-24 bg-secondary">
-        <div className="container text-center">
+      <section className="relative overflow-hidden py-16 md:py-24 bg-secondary">
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+            <div className="absolute top-1/2 left-1/2 w-[40rem] h-[40rem] bg-primary/10 rounded-full filter blur-3xl animate-blob-three opacity-50"></div>
+            <div className="absolute top-1/2 left-1/2 w-[30rem] h-[30rem] bg-accent-yellow/10 rounded-full filter blur-3xl animate-blob-four opacity-50"></div>
+        </div>
+        <div className="container text-center relative">
           <h1 className="text-4xl font-bold font-headline">Contact Us</h1>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
             Get in touch with our team to discuss your needs.
