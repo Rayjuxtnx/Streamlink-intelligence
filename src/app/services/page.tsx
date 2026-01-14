@@ -42,6 +42,7 @@ const serviceSections = [
         title: 'Frontend Development',
         description:
           'Creating beautiful, responsive, and user-friendly interfaces that provide a seamless user experience across all devices.',
+        link: '/services/frontend-development',
       },
       {
         id: 'backend-development',
@@ -49,6 +50,7 @@ const serviceSections = [
         title: 'Backend Development',
         description:
           'Building robust and scalable server-side applications, ensuring high performance and data security.',
+        link: '/contact?service=backend-development',
       },
       {
         id: 'full-stack-development',
@@ -56,6 +58,7 @@ const serviceSections = [
         title: 'Full-Stack Development',
         description:
           'End-to-end packages covering frontend, backend, and deployment for complete web solutions.',
+        link: '/contact?service=full-stack-development',
       },
       {
         id: 'database-integration',
@@ -63,6 +66,7 @@ const serviceSections = [
         title: 'Database Integration',
         description:
           'Integrating and managing databases to ensure data is stored efficiently, securely, and is easily accessible.',
+        link: '/contact?service=database-integration',
       },
       {
         id: 'api-development',
@@ -70,6 +74,7 @@ const serviceSections = [
         title: 'API Development & Integration',
         description:
           'Designing and integrating APIs to connect services, automate workflows, and extend application functionality.',
+        link: '/contact?service=api-development',
       },
       {
         id: 'system-development',
@@ -77,6 +82,7 @@ const serviceSections = [
         title: 'System Development',
         description:
           'End-to-end design and development of custom software systems tailored to your business needs.',
+        link: '/contact?service=system-development',
       },
       {
         id: 'wifi-billing',
@@ -84,6 +90,7 @@ const serviceSections = [
         title: 'WiFi Billing System',
         description:
           'Automated billing and management for WiFi hotspot providers, including voucher generation and payment integration.',
+        link: '/contact?service=wifi-billing',
       },
     ],
   },
@@ -97,6 +104,7 @@ const serviceSections = [
         title: 'Networking Solutions',
         description:
           'Building and maintaining robust and reliable network infrastructures to ensure seamless connectivity and performance.',
+        link: '/contact?service=networking-solutions',
       },
     ],
   },
@@ -110,6 +118,7 @@ const serviceSections = [
         title: 'Cyber Security Consulting',
         description:
           'Protecting your digital assets with comprehensive security services, from identifying weaknesses to responding to threats.',
+        link: '/contact?service=cyber-security-consulting',
       },
     ],
   },
@@ -123,6 +132,7 @@ const serviceSections = [
         title: 'ML & AI',
         description:
           'Leveraging machine learning and artificial intelligence to build smart applications and drive data-driven decisions.',
+        link: '/contact?service=ml-ai-solutions',
       },
     ],
   },
@@ -136,6 +146,7 @@ const serviceSections = [
         title: 'Digital Marketing',
         description:
           'Driving brand growth through strategic online marketing campaigns and engaging content tailored to your target audience.',
+        link: '/contact?service=digital-marketing-campaigns',
       },
       {
         id: 'seo',
@@ -143,6 +154,7 @@ const serviceSections = [
         title: 'SEO',
         description:
           'Optimizing your website to rank higher in search engine results, increasing organic traffic and online visibility.',
+        link: '/contact?service=seo',
       },
       {
         id: 'sem',
@@ -150,6 +162,7 @@ const serviceSections = [
         title: 'Search Engine Marketing (SEM)',
         description:
           'Driving targeted traffic and generating leads through paid search engine advertising campaigns.',
+        link: '/contact?service=sem',
       },
     ],
   },
@@ -163,6 +176,7 @@ const serviceSections = [
         title: 'Event DJ',
         description:
           'Bringing the right vibe to your special occasions with a professional and versatile music selection.',
+        link: '/contact?service=event-dj',
       },
       {
         id: 'event-decoration',
@@ -170,6 +184,7 @@ const serviceSections = [
         title: 'Event Decoration',
         description:
           'Transforming venues into unforgettable experiences with creative and elegant decoration solutions.',
+        link: '/contact?service=event-decoration',
       },
     ],
   },
@@ -211,7 +226,7 @@ export default function ServicesPage() {
                       </CardContent>
                       <CardFooter>
                          <Button variant="link" asChild className="w-full text-primary">
-                            <Link href={`/contact?service=${service.id}`}>View Details</Link>
+                            <Link href={service.link || `/contact?service=${service.id}`}>View Details</Link>
                           </Button>
                       </CardFooter>
                     </Card>
