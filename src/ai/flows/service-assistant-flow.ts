@@ -165,8 +165,13 @@ export async function serviceAssistant(
     return "Hello! How can I help you learn about our services today?";
   }
 
+  if (userMessage.includes('all services') || userMessage.includes('what services')) {
+    const allServices = serviceSections.flatMap(section => section.services.map(s => s.title)).join(', ');
+    return `We offer a wide range of services: ${allServices}. You can ask me for details on any of these, or see them all on our services page: /services`;
+  }
+
   if (userMessage.includes('book') || userMessage.includes('price') || userMessage.includes('consultation') || userMessage.includes('contact')) {
-    return 'To get a quote or book a service, please reach out to us through our contact page. You can request a consultation here: /contact';
+    return 'To get a quote, book a service, or for any other inquiries, please reach out to us through our contact page. \n\n- Phone: +254 700 167 972\n- Email: enterprise@streamlink-intel.com\n- Or visit: /contact';
   }
 
   for (const section of serviceSections) {
@@ -181,5 +186,5 @@ export async function serviceAssistant(
       }
   }
 
-  return "I can only answer questions about Streamlink's services. Please ask me about one of our services, or visit our contact page to book a consultation.";
+  return "I can answer questions about Streamlink's services. Try asking me:\n\n- 'What is frontend development?'\n- 'Tell me about all your services.'\n- 'How can I contact you?'";
 }

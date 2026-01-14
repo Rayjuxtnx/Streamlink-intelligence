@@ -114,7 +114,9 @@ export function AiChatWidget() {
                 <Bot className="h-8 w-8 p-1.5 rounded-full bg-primary text-primary-foreground" />
               </div>
               <div className="p-3 rounded-lg bg-secondary">
-                <p>Hello! I&apos;m Link, your AI assistant. How can I help you learn about our services today?</p>
+                <p className="whitespace-pre-wrap">Hello! I'm Link, your AI assistant. I can answer questions about our services or help you find our contact information.
+
+How can I help you today?</p>
               </div>
             </div>
             {messages.map((message, index) => (
