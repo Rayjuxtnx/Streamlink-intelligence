@@ -22,7 +22,7 @@ const projects = [
     description:
       'Web Developer & Digital Consultant. Developed a professional website for a leading mildsteel company offering welding and fabrication services in Kenya and the USA. The site showcases their portfolio, services, and facilitates customer inquiries.',
     tags: ['React', 'Next.js', 'Tailwind CSS', 'Node.js', 'Formspree'],
-    link: '#',
+    link: 'https://kawady.com/',
   },
   {
     id: 'project-seo-scout',
