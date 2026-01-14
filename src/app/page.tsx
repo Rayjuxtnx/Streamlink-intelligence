@@ -193,65 +193,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Leadership Section */}
-      <section className="py-16 md:py-24">
-        <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-12 font-headline">
-            Meet Our Leadership
-          </h2>
-          <Carousel
-            opts={{
-              loop: true,
-              align: 'start',
-            }}
-            plugins={[
-              Autoplay({
-                delay: 5000,
-                stopOnInteraction: true,
-                stopOnMouseEnter: true,
-              }),
-            ]}
-            className="w-full"
-          >
-            <CarouselContent>
-              {leadershipTeam.map((person, index) => {
-                const image = leadershipImages.find(
-                  (img) => img.id === person.imageId
-                );
-                return (
-                  <CarouselItem
-                    key={index}
-                    className="md:basis-1/2 lg:basis-1/3"
-                  >
-                    <Card className="h-full text-center hover:shadow-lg transition-all duration-300 hover:border-primary/50 hover:-translate-y-1">
-                      <CardContent className="pt-6">
-                        {image && (
-                          <Image
-                            src={image.imageUrl}
-                            alt={`Portrait of ${person.name}`}
-                            width={120}
-                            height={120}
-                            className="rounded-full mx-auto mb-4 border-4 border-primary/20"
-                            data-ai-hint={image.imageHint}
-                          />
-                        )}
-                        <h3 className="text-xl font-bold">{person.name}</h3>
-                        <p className="text-primary font-semibold">
-                          {person.role}
-                        </p>
-                        <p className="text-muted-foreground mt-2 text-sm">
-                          {person.description}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </CarouselItem>
-                );
-              })}
-            </CarouselContent>
-          </Carousel>
-        </div>
-      </section>
-
       {/* Why Choose Us */}
       <section className="py-16 md:py-24 bg-secondary/50">
         <div className="container">
