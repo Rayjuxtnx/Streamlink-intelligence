@@ -14,6 +14,13 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const projects = [
   {
+    id: 'project-kawady',
+    title: 'Kawady Mildsteel Company',
+    description:
+      'Developed a professional website for a leading mildsteel company offering welding and fabrication services. The site showcases their portfolio and facilitates customer inquiries.',
+    tags: ['React', 'Next.js', 'Tailwind CSS', 'Formspree'],
+  },
+  {
     id: 'project-network-monitoring',
     title: 'AI-Powered Network Monitoring',
     description:
