@@ -8,8 +8,6 @@ import { Header } from '@/components/common/header';
 import { Footer } from '@/components/common/footer';
 import { Toaster } from '@/components/ui/toaster';
 import { AiChatWidget } from '@/components/ai-chat-widget';
-import { useState, useEffect } from 'react';
-import { Preloader } from '@/components/preloader';
 
 // Metadata needs to be exported from a server component or at the page level.
 // Since we are making the layout a client component, we can't export it from here.
@@ -28,16 +26,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 100); // Reduced preloader time
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
@@ -59,19 +47,15 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <ThemeProvider>
-          {loading ? (
-            <Preloader />
-          ) : (
-            <div className="relative flex min-h-dvh flex-col bg-background">
-              <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-                <div className="absolute top-1/2 left-1/2 w-[60rem] h-[60rem] bg-accent-blue/20 rounded-full filter blur-3xl animate-blob-one opacity-30"></div>
-                <div className="absolute top-1/2 left-1/2 w-[50rem] h-[50rem] bg-accent-yellow/20 rounded-full filter blur-3xl animate-blob-two opacity-30"></div>
-              </div>
-              <Header />
-              <main className="flex-1">{children}</main>
-              <Footer />
+          <div className="relative flex min-h-dvh flex-col bg-background">
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+              <div className="absolute top-1/2 left-1/2 w-[60rem] h-[60rem] bg-accent-blue/20 rounded-full filter blur-3xl animate-blob-one opacity-30"></div>
+              <div className="absolute top-1/2 left-1/2 w-[50rem] h-[50rem] bg-accent-yellow/20 rounded-full filter blur-3xl animate-blob-two opacity-30"></div>
             </div>
-          )}
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
           <Toaster />
           <AiChatWidget />
         </ThemeProvider>
