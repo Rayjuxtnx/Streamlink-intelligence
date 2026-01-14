@@ -30,7 +30,7 @@ const projects = [
     description:
       'Creator & Full-Stack Developer. Developed a comprehensive platform combining a live SEO tracking tool with a digital skills educational hub. The tool provides real-time SEO analytics, while the educational section offers courses on digital marketing.',
     tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel', 'SEO APIs'],
-    link: '#',
+    link: 'https://seo-scout-roan.vercel.app/',
   },
   {
     id: 'project-drone-tracking',
@@ -118,7 +118,7 @@ export default function ProjectsPage() {
                   </CardContent>
                   <CardFooter>
                     <Button asChild variant="link" className='text-primary'>
-                        <Link href={project.link}>View Project &rarr;</Link>
+                        <Link href={project.link} target='_blank'>View Project &rarr;</Link>
                     </Button>
                   </CardFooter>
                 </Card>
