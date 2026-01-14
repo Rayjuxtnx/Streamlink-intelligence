@@ -10,6 +10,7 @@ import {
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import {
+  Paintbrush,
   Briefcase,
   Cloud,
   Code2,
@@ -18,234 +19,157 @@ import {
   Database,
   CheckCircle,
   Star,
+  Cpu,
+  Music,
+  Palette,
+  Megaphone,
+  Search,
+  Target,
+  Network,
+  Server,
+  Layers,
+  Webhook,
 } from 'lucide-react';
 
-const services = [
+const serviceSections = [
   {
-    id: 'isp',
-    icon: Globe,
-    title: 'ISP & Network Services',
-    description:
-      'We provide enterprise-grade internet services and network infrastructure design, implementation, and management to ensure your business stays connected and performs optimally.',
-    details: [
-      'High-speed fiber optic and wireless connectivity.',
-      'Software-Defined Networking (SD-WAN) for optimized performance.',
-      '24/7 network monitoring and proactive maintenance.',
-      'Custom network design for scalability and security.',
-    ],
-    packages: [
+    id: 'software-development',
+    title: 'Software & Web Development',
+    services: [
       {
-        name: 'Basic',
-        price: '$499/mo',
-        features: [
-          'Up to 500 Mbps Shared Bandwidth',
-          'Standard SLA',
-          'Business Hours Support',
-          'Basic Firewall Setup',
-        ],
-        cta: 'Get Started',
+        id: 'frontend-development',
+        icon: Code2,
+        title: 'Frontend Development',
+        description:
+          'Creating beautiful, responsive, and user-friendly interfaces that provide a seamless user experience across all devices.',
       },
       {
-        name: 'Premium',
-        price: 'Contact Us',
-        features: [
-          '1 Gbps+ Dedicated Fiber',
-          'Enhanced SLA with 99.99% Uptime',
-          '24/7 Priority Support',
-          'Advanced SD-WAN & QoS',
-        ],
-        cta: 'Request a Quote',
-        isFeatured: true,
+        id: 'backend-development',
+        icon: Server,
+        title: 'Backend Development',
+        description:
+          'Building robust and scalable server-side applications, ensuring high performance and data security.',
+      },
+      {
+        id: 'full-stack-development',
+        icon: Layers,
+        title: 'Full-Stack Development',
+        description:
+          'End-to-end packages covering frontend, backend, and deployment for complete web solutions.',
+      },
+      {
+        id: 'database-integration',
+        icon: Database,
+        title: 'Database Integration',
+        description:
+          'Integrating and managing databases to ensure data is stored efficiently, securely, and is easily accessible.',
+      },
+      {
+        id: 'api-development',
+        icon: Webhook,
+        title: 'API Development & Integration',
+        description:
+          'Designing and integrating APIs to connect services, automate workflows, and extend application functionality.',
+      },
+      {
+        id: 'system-development',
+        icon: Briefcase,
+        title: 'System Development',
+        description:
+          'End-to-end design and development of custom software systems tailored to your business needs.',
+      },
+      {
+        id: 'wifi-billing',
+        icon: Globe,
+        title: 'WiFi Billing System',
+        description:
+          'Automated billing and management for WiFi hotspot providers, including voucher generation and payment integration.',
       },
     ],
   },
   {
-    id: 'cloud',
-    icon: Cloud,
-    title: 'Cloud Computing Solutions',
-    description:
-      'Our scalable cloud services include IaaS, PaaS, and SaaS solutions, offering flexible, secure, and cost-effective hosting for your applications and data.',
-    details: [
-      'Multi-cloud strategy and implementation (AWS, Azure, GCP).',
-      'Serverless architecture for cost-efficient scaling.',
-      'Containerization with Docker and Kubernetes.',
-      'Automated backup and disaster recovery solutions.',
-    ],
-    packages: [
+    id: 'cloud-networking',
+    title: 'Cloud & Networking Solutions',
+    services: [
       {
-        name: 'Basic',
-        price: '$299/mo',
-        features: [
-          'Single-Cloud Setup',
-          'Managed VM / Basic K8s',
-          'Daily Backups',
-          'Community Support',
-        ],
-        cta: 'Get Started',
-      },
-      {
-        name: 'Premium',
-        price: 'Contact Us',
-        features: [
-          'Multi-Cloud or Hybrid Setup',
-          'Advanced Kubernetes Orchestration',
-          'Real-time Disaster Recovery',
-          'Dedicated Cloud Architect',
-        ],
-        cta: 'Request a Quote',
-        isFeatured: true,
+        id: 'networking-solutions',
+        icon: Network,
+        title: 'Networking Solutions',
+        description:
+          'Building and maintaining robust and reliable network infrastructures to ensure seamless connectivity and performance.',
       },
     ],
   },
   {
     id: 'cybersecurity',
-    icon: Shield,
-    title: 'Cybersecurity & Risk Management',
-    description:
-      'Protect your digital assets with our comprehensive cybersecurity services, including threat analysis, vulnerability assessments, and proactive defense strategies.',
-    details: [
-      'Managed Security Operations Center (SOC) as a Service.',
-      'Advanced threat detection and response (EDR/XDR).',
-      'Penetration testing and vulnerability management.',
-      'Compliance and regulatory adherence (e.g., GDPR, HIPAA).',
-    ],
-    packages: [
+    title: 'Cyber Security',
+    services: [
       {
-        name: 'Basic',
-        price: '$999/mo',
-        features: [
-          'Monthly Vulnerability Scans',
-          'Managed Firewall',
-          'Endpoint Detection & Response (EDR)',
-          'Security Awareness Training',
-        ],
-        cta: 'Get Started',
-      },
-      {
-        name: 'Premium',
-        price: 'Contact Us',
-        features: [
-          '24/7 Managed SOC',
-          'Proactive Threat Hunting (XDR)',
-          'Regular Penetration Testing',
-          'Virtual CISO (vCISO) Services',
-        ],
-        cta: 'Request a Quote',
-        isFeatured: true,
+        id: 'cyber-security-consulting',
+        icon: Shield,
+        title: 'Cyber Security Consulting',
+        description:
+          'Protecting your digital assets with comprehensive security services, from identifying weaknesses to responding to threats.',
       },
     ],
   },
   {
-    id: 'web-development',
-    icon: Code2,
-    title: 'Web Development',
-    description:
-      'From corporate websites to complex e-commerce platforms, we build responsive, fast, and secure web solutions tailored to your brand and business goals.',
-    details: [
-      'Custom front-end and back-end development.',
-      'Progressive Web App (PWA) and mobile-first design.',
-      'Content Management System (CMS) implementation and customization.',
-      'API design and integration for seamless connectivity.',
-    ],
-    packages: [
+    id: 'ml-ai',
+    title: 'Machine Learning & AI',
+    services: [
       {
-        name: 'Basic',
-        price: 'From $5,000',
-        features: [
-          'Up to 10 Pages',
-          'CMS Integration',
-          'Responsive Design',
-          'Basic SEO Setup',
-        ],
-        cta: 'Get Started',
-      },
-      {
-        name: 'Premium',
-        price: 'Contact Us',
-        features: [
-          'Custom Web Application',
-          'E-commerce & Payments',
-          'API Integrations',
-          'Ongoing Maintenance & Support',
-        ],
-        cta: 'Request a Quote',
-        isFeatured: true,
+        id: 'ml-ai-solutions',
+        icon: Cpu,
+        title: 'ML & AI',
+        description:
+          'Leveraging machine learning and artificial intelligence to build smart applications and drive data-driven decisions.',
       },
     ],
   },
   {
-    id: 'system-development',
-    icon: Database,
-    title: 'System & Software Development',
-    description:
-      'We develop custom software and enterprise systems that streamline your operations, improve efficiency, and provide a competitive advantage.',
-    details: [
-      'Enterprise Resource Planning (ERP) and Customer Relationship Management (CRM) systems.',
-      'AI and Machine Learning model integration.',
-      'Agile development methodologies for rapid delivery.',
-      'Legacy system modernization and migration.',
-    ],
-    packages: [
+    id: 'digital-marketing',
+    title: 'Digital Marketing',
+    services: [
       {
-        name: 'Basic',
-        price: 'Project-based',
-        features: [
-          'Internal Tool Development',
-          'Process Automation Scripts',
-          'Database Design',
-          'Technical Specification Document',
-        ],
-        cta: 'Get Started',
+        id: 'digital-marketing-campaigns',
+        icon: Megaphone,
+        title: 'Digital Marketing',
+        description:
+          'Driving brand growth through strategic online marketing campaigns and engaging content tailored to your target audience.',
       },
       {
-        name: 'Premium',
-        price: 'Contact Us',
-        features: [
-          'Full ERP/CRM System',
-          'AI Model Integration',
-          'Legacy System Migration',
-          'Dedicated Project Manager',
-        ],
-        cta: 'Request a Quote',
-        isFeatured: true,
+        id: 'seo',
+        icon: Search,
+        title: 'SEO',
+        description:
+          'Optimizing your website to rank higher in search engine results, increasing organic traffic and online visibility.',
+      },
+      {
+        id: 'sem',
+        icon: Target,
+        title: 'Search Engine Marketing (SEM)',
+        description:
+          'Driving targeted traffic and generating leads through paid search engine advertising campaigns.',
       },
     ],
   },
   {
-    id: 'consulting',
-    icon: Briefcase,
-    title: 'IT Consulting & Support',
-    description:
-      'Our expert consultants provide strategic IT guidance, from infrastructure planning to digital transformation, backed by reliable 24/7 technical support.',
-    details: [
-      'IT roadmap and technology strategy development.',
-      'Digital transformation and change management.',
-      'Project management and delivery oversight.',
-      'Dedicated helpdesk and on-site support.',
-    ],
-    packages: [
+    id: 'event-services',
+    title: 'Event Services',
+    services: [
       {
-        name: 'Basic',
-        price: '$150/hour',
-        features: [
-          'On-demand IT Advice',
-          'Technology Assessments',
-          'Vendor Selection Assistance',
-          'Remote Support',
-        ],
-        cta: 'Get Started',
+        id: 'event-dj',
+        icon: Music,
+        title: 'Event DJ',
+        description:
+          'Bringing the right vibe to your special occasions with a professional and versatile music selection.',
       },
       {
-        name: 'Premium',
-        price: 'Retainer',
-        features: [
-          'Strategic IT Roadmap',
-          'Digital Transformation Strategy',
-          'Project Management',
-          'Dedicated vCIO',
-        ],
-        cta: 'Request a Quote',
-        isFeatured: true,
+        id: 'event-decoration',
+        icon: Palette,
+        title: 'Event Decoration',
+        description:
+          'Transforming venues into unforgettable experiences with creative and elegant decoration solutions.',
       },
     ],
   },
@@ -266,77 +190,33 @@ export default function ServicesPage() {
 
       <section className="py-16 md:py-24">
         <div className="container space-y-20">
-          {services.map((service, index) => (
+          {serviceSections.map((section) => (
             <div
-              key={service.id}
-              id={service.id}
+              key={section.id}
+              id={section.id}
               className="scroll-mt-20"
             >
-              <div
-                className="grid md:grid-cols-2 gap-12 items-center"
-              >
-                <div className={index % 2 === 1 ? 'md:order-2' : ''}>
-                  <div className="mb-4 flex items-center gap-4">
-                    <div className="bg-primary/10 text-primary p-3 rounded-md flex-shrink-0">
-                      <service.icon className="h-8 w-8" />
-                    </div>
-                    <h2 className="text-3xl font-bold font-headline">{service.title}</h2>
-                  </div>
-                  <p className="text-muted-foreground text-lg mb-6">{service.description}</p>
-                  <ul className="space-y-3">
-                    {service.details.map((detail, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <CheckCircle className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                        <span className="text-muted-foreground">{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className={index % 2 === 1 ? 'md:order-1' : ''}>
-                  <Card className="bg-secondary/50 border-primary/20">
-                    <CardContent className="p-8">
-                      <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                          <service.icon className="h-24 w-24 text-muted-foreground/30" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              <div className="mt-16">
-                <h3 className="text-2xl font-bold text-center mb-10 font-headline">Pricing Tiers</h3>
-                <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                  {service.packages.map((pkg) => (
-                    <Card key={pkg.name} className={`flex flex-col ${pkg.isFeatured ? 'border-primary shadow-lg' : ''}`}>
-                       {pkg.isFeatured && (
-                        <div className="bg-primary text-primary-foreground text-xs font-bold uppercase tracking-wider text-center py-1 rounded-t-lg">
-                          Most Popular
+              <h2 className="text-3xl font-bold font-headline text-center mb-12">{section.title}</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {section.services.map((service) => (
+                    <Card key={service.id} className="flex flex-col text-center hover:shadow-lg transition-all duration-300 hover:border-primary/50 hover:-translate-y-1">
+                      <CardHeader>
+                        <div className="mx-auto bg-primary/10 text-primary p-4 rounded-full w-fit">
+                            <service.icon className="h-8 w-8" />
                         </div>
-                      )}
-                      <CardHeader className="text-center">
-                        <CardTitle className="text-2xl">{pkg.name}</CardTitle>
-                        <CardDescription>{pkg.price}</CardDescription>
+                        <CardTitle className="mt-4">{service.title}</CardTitle>
                       </CardHeader>
                       <CardContent className="flex-grow">
-                        <ul className="space-y-3">
-                          {pkg.features.map((feature, i) => (
-                            <li key={i} className="flex items-start gap-3">
-                              <CheckCircle className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
+                        <p className="text-muted-foreground">{service.description}</p>
                       </CardContent>
                       <CardFooter>
-                        <Button asChild className="w-full" variant={pkg.isFeatured ? 'default' : 'outline'}>
-                          <Link href="/contact">{pkg.cta}</Link>
-                        </Button>
+                         <Button variant="link" asChild className="w-full text-primary">
+                            <Link href={`/contact?service=${service.id}`}>View Details</Link>
+                          </Button>
                       </CardFooter>
                     </Card>
-                  ))}
-                </div>
+                ))}
               </div>
-
             </div>
           ))}
         </div>
