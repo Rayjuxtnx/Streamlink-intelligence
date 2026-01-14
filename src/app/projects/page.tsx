@@ -35,8 +35,15 @@ const projects = [
   {
     id: 'project-drone-tracking',
     title: 'Drone Tracking System',
-    description: 'Developed a real-time drone tracking system with a live map interface. The system monitors drone fleet status, flight paths, and telemetry data, providing a centralized dashboard for operators.',
+    description: 'Full-Stack Developer. Developed a real-time drone tracking system with a live map interface. The system monitors drone fleet status, flight paths, and telemetry data, providing a centralized dashboard for operators.',
     tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Mapbox', 'Vercel'],
+    link: '#',
+  },
+  {
+    id: 'project-rental-management',
+    title: 'Rental Management System',
+    description: 'Full-Stack Developer. Engineered a comprehensive rental management system from the ground up. The platform features tenant and property management, automated payment processing, and maintenance request tracking to streamline operations for landlords.',
+    tags: ['Next.js', 'React', 'Node.js', 'MongoDB', 'Stripe API'],
     link: '#',
   },
   {
