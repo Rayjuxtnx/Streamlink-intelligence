@@ -53,14 +53,6 @@ const projects = [
     tags: ['Next.js', 'React', 'Node.js', 'MongoDB', 'Socket.IO', 'Tailwind CSS'],
     link: 'https://kinde.netlify.app/',
   },
-  {
-    id: 'project-kubernetes',
-    title: 'Multi-Cloud Kubernetes Platform',
-    description:
-      'Developed a unified container orchestration platform across AWS, Azure, and GCP, enabling seamless application deployment and scaling for a global enterprise.',
-    tags: ['Kubernetes', 'Go', 'Multi-Cloud', 'DevOps'],
-    link: '#',
-  },
 ];
 
 export default function ProjectsPage() {
