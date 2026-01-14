@@ -66,7 +66,7 @@ const serviceSections = [
         title: 'Database Integration',
         description:
           'Integrating and managing databases to ensure data is stored efficiently, securely, and is easily accessible.',
-        link: '/contact?service=database-integration',
+        link: '/services/database-integration',
       },
       {
         id: 'api-development',
