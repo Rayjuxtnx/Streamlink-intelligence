@@ -51,7 +51,7 @@ const projects = [
     title: 'School Management System',
     description: 'Full-Stack Developer. Designed and developed a comprehensive school management system to streamline administrative tasks. The platform includes modules for student information, grades, attendance, and parent-teacher communication.',
     tags: ['Next.js', 'React', 'Node.js', 'MongoDB', 'Socket.IO', 'Tailwind CSS'],
-    link: '#',
+    link: 'https://kinde.netlify.app/',
   },
   {
     id: 'project-kubernetes',
