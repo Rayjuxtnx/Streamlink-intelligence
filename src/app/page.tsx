@@ -117,7 +117,7 @@ export default function Home() {
       </section>
 
       {/* Services Overview */}
-      <section id="services" className="py-16 md:py-24 bg-secondary">
+      <section id="services" className="py-16 md:py-24 bg-secondary/50">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold font-headline">
@@ -129,7 +129,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300 hover:border-primary/50 hover:-translate-y-1">
+              <Card key={index} className="text-center transition-all duration-300 hover:border-primary/50 hover:-translate-y-1 bg-card/60 backdrop-blur-sm">
                 <CardHeader>
                   <div className="mx-auto bg-primary/10 text-primary p-4 rounded-full w-fit">
                     <service.icon className="h-8 w-8" />
