@@ -230,12 +230,14 @@ const ServiceAssistantOutputSchema = z.object({
   options: z.array(OptionSchema).optional().describe('The menu of options for the user.'),
   link: z.string().optional().describe('A URL link for the user to follow.'),
   linkText: z.string().optional().describe('The text for the URL link.'),
+  map: z.boolean().optional().describe('Whether to display a map.'),
 });
 export type ServiceAssistantOutput = z.infer<typeof ServiceAssistantOutputSchema>;
 
 const mainMenuOptions: Option[] = [
   { id: 'all_services', display: 'Explore Our Services' },
   { id: 'contact_info', display: 'Contact Information' },
+  { id: 'find_us', display: 'Find Us on Map' },
 ];
 
 export async function serviceAssistant(
@@ -247,6 +249,14 @@ export async function serviceAssistant(
     return {
       message: "Hello! I'm Link, your AI assistant. How can I help you today?",
       options: mainMenuOptions,
+    };
+  }
+  
+  if (selection === 'find_us') {
+    return {
+      message: 'You can find us at KASNEB Towers 2. Here is our location on Google Maps.',
+      map: true,
+      options: [{ id: 'main_menu', display: 'Back to Main Menu' }],
     };
   }
 
