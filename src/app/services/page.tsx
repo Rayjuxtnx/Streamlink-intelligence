@@ -146,7 +146,7 @@ const serviceSections = [
         title: 'Digital Marketing',
         description:
           'Driving brand growth through strategic online marketing campaigns and engaging content tailored to your target audience.',
-        link: '/contact?service=digital-marketing-campaigns',
+        link: '/services/digital-marketing',
       },
       {
         id: 'seo',
