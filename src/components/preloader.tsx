@@ -7,7 +7,7 @@ export function Preloader() {
         <div className="absolute inset-0 bg-primary/20 rounded-full animate-preloader-pulse-outer"></div>
         <div className="absolute inset-4 bg-primary/30 rounded-full animate-preloader-pulse-inner"></div>
         <div className="relative z-10 flex flex-col items-center text-center">
-          <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent-yellow to-primary-foreground animate-text-gradient">
+          <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent-yellow to-primary-foreground">
             Streamlink
           </h1>
         </div>

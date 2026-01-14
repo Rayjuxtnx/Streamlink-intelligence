@@ -154,7 +154,7 @@ export default {
         },
         'text-gradient': {
             'to': {
-                'background-position': '200% center',
+                backgroundPosition: '200% center',
             },
         },
       },
@@ -170,7 +170,7 @@ export default {
         'glow-subtle': 'glow-subtle 8s ease-in-out infinite',
         'preloader-pulse-outer': 'preloader-pulse-outer 3s infinite ease-in-out',
         'preloader-pulse-inner': 'preloader-pulse-inner 3s infinite ease-in-out -1.5s',
-        'text-gradient': 'text-gradient 4s linear infinite',
+        'text-gradient': 'text-gradient 2s linear infinite',
       },
     },
   },
