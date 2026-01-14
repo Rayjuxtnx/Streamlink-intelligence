@@ -74,7 +74,7 @@ const serviceSections = [
         title: 'API Development & Integration',
         description:
           'Designing and integrating APIs to connect services, automate workflows, and extend application functionality.',
-        link: '/contact?service=api-development',
+        link: '/services/api-development',
       },
       {
         id: 'system-development',
