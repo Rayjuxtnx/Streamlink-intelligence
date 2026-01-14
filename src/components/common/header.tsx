@@ -96,6 +96,19 @@ export function Header() {
                       </Link>
                     </SheetClose>
                   ))}
+                   <SheetClose asChild>
+                      <Link
+                        href="/terms"
+                        className={cn(
+                          'p-2 rounded-md transition-colors hover:bg-accent',
+                          pathname === "/terms"
+                            ? 'text-foreground bg-accent'
+                            : 'text-foreground/60'
+                        )}
+                      >
+                        Terms & Conditions
+                      </Link>
+                    </SheetClose>
                 </nav>
                 <SheetClose asChild>
                   <Button asChild className="w-full mt-6">
