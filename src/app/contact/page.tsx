@@ -7,6 +7,7 @@ import {
 import {
   Mail,
   Phone,
+  MapPin,
 } from 'lucide-react';
 
 
@@ -23,7 +24,7 @@ export default function ContactPage() {
       </section>
 
       <section className="py-16 md:py-24">
-        <div className="container grid md:grid-cols-2 gap-16 items-center">
+        <div className="container grid md:grid-cols-2 gap-16 items-start">
           <div className="space-y-8">
             <h2 className="text-3xl font-bold font-headline">
               Begin Your Transformation
@@ -80,6 +81,29 @@ export default function ContactPage() {
           <div>
             <EnterpriseContactForm />
           </div>
+        </div>
+      </section>
+      
+      <section className="pb-16 md:pb-24">
+        <div className="container">
+           <h2 className="text-3xl font-bold font-headline text-center mb-12">
+              Find Us On Google Maps
+            </h2>
+          <Card>
+            <CardContent className="p-2">
+              <div className="aspect-video w-full rounded-md overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255282.3585374981!2d36.68257924610266!3d-1.303191763131754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
     </>
