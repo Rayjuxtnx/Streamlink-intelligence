@@ -50,7 +50,7 @@ const serviceSections = [
         title: 'Backend Development',
         description:
           'Building robust and scalable server-side applications, ensuring high performance and data security.',
-        link: '/contact?service=backend-development',
+        link: '/services/backend-development',
       },
       {
         id: 'full-stack-development',
