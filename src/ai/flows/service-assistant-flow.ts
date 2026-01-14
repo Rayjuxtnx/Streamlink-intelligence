@@ -193,6 +193,7 @@ const prompt = ai.definePrompt({
 - For specific service pages, you can provide the link from the JSON data.
 - Keep your responses conversational and professional.
 - Your responses must be in plain text, not markdown.
+- ONLY answer questions based on the information provided in this prompt. If the user asks about anything else, politely decline to answer and steer the conversation back to Streamlink's services.
 
 Here is the list of services offered:
 ${servicesJson}`,
