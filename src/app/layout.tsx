@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/common/header';
 import { Footer } from '@/components/common/footer';
 import { Toaster } from '@/components/ui/toaster';
+import { AiChatWidget } from '@/components/ai-chat-widget';
 
 export const metadata: Metadata = {
   title: 'Streamlink Technologies Operations',
@@ -44,6 +45,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <Toaster />
+          <AiChatWidget />
         </ThemeProvider>
       </body>
     </html>
