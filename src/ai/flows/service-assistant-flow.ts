@@ -7,26 +7,7 @@
  * - ServiceAssistantOutput - The return type for the serviceAssistant function.
  */
 
-import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
-import {
-  Briefcase,
-  Cloud,
-  Code2,
-  Cpu,
-  Database,
-  Globe,
-  Layers,
-  Megaphone,
-  Music,
-  Network,
-  Palette,
-  Search,
-  Server,
-  Shield,
-  Target,
-  Webhook,
-} from 'lucide-react';
 
 // Simplified service data for the AI prompt.
 const serviceSections = [
@@ -174,43 +155,31 @@ export type ServiceAssistantOutput = z.infer<
 export async function serviceAssistant(
   input: ServiceAssistantInput
 ): Promise<ServiceAssistantOutput> {
-  return serviceAssistantFlow(input);
-}
+  const userMessage = input.history[input.history.length - 1]?.parts[0]?.text.toLowerCase();
 
-const servicesJson = JSON.stringify(serviceSections, null, 2);
-
-const prompt = ai.definePrompt({
-  name: 'serviceAssistantPrompt',
-  input: { schema: ServiceAssistantInputSchema },
-  output: { schema: ServiceAssistantOutputSchema },
-  system: `You are a friendly and helpful AI assistant for Streamlink Technologies Operations. Your goal is to answer user questions about the company's services and guide them to book a consultation.
-
-- Your name is 'Link'.
-- Be concise and clear in your answers.
-- Use the provided JSON data to answer questions about services. Do not make up services.
-- When a user wants to book a service or asks for a price, guide them to the contact page. You can tell them to "request a consultation" or "contact us for pricing details".
-- You can provide the link to the contact page: /contact
-- For specific service pages, you can provide the link from the JSON data.
-- Keep your responses conversational and professional.
-- Your responses must be in plain text, not markdown.
-- ONLY answer questions based on the information provided in this prompt. If the user asks about anything else, politely decline to answer and steer the conversation back to Streamlink's services.
-
-Here is the list of services offered:
-${servicesJson}`,
-});
-
-const serviceAssistantFlow = ai.defineFlow(
-  {
-    name: 'serviceAssistantFlow',
-    inputSchema: ServiceAssistantInputSchema,
-    outputSchema: ServiceAssistantOutputSchema,
-  },
-  async ({ history }) => {
-    const { response } = await ai.generate({
-      model: 'googleai/gemini-2.5-flash',
-      prompt: history,
-      system: prompt.system,
-    });
-    return response.text;
+  if (!userMessage) {
+    return "I'm sorry, I didn't get that. How can I help you with our services?";
   }
-);
+  
+  if (userMessage.includes('hello') || userMessage.includes('hi')) {
+    return "Hello! How can I help you learn about our services today?";
+  }
+
+  if (userMessage.includes('book') || userMessage.includes('price') || userMessage.includes('consultation') || userMessage.includes('contact')) {
+    return 'To get a quote or book a service, please reach out to us through our contact page. You can request a consultation here: /contact';
+  }
+
+  for (const section of serviceSections) {
+    for (const service of section.services) {
+      if (userMessage.includes(service.title.toLowerCase())) {
+        return `We offer ${service.title}. ${service.description} You can find more details here: ${service.link}`;
+      }
+    }
+     if (userMessage.includes(section.title.toLowerCase())) {
+        const serviceTitles = section.services.map(s => s.title).join(', ');
+        return `Under ${section.title}, we offer the following services: ${serviceTitles}. You can see all of them here: /services#${section.id}`;
+      }
+  }
+
+  return "I can only answer questions about Streamlink's services. Please ask me about one of our services, or visit our contact page to book a consultation.";
+}
