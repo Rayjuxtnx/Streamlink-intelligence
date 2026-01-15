@@ -1,6 +1,12 @@
 {
   "placeholderImages": [
     {
+      "id": "logo",
+      "description": "Streamlink company logo",
+      "imageUrl": "https://placehold.co/120x40/212529/98FF98?text=Streamlink",
+      "imageHint": "company logo"
+    },
+    {
       "id": "hero",
       "description": "Abstract tech background with network lines and data flow",
       "imageUrl": "https://images.unsplash.com/photo-1649429398909-db7ae841c386?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMG5ldHdvcmt8ZW58MHx8fHwxNzY4MjUwMjEwfDA&ixlib=rb-4.1.0&q=80&w=1080",

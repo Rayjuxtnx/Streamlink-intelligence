@@ -14,6 +14,7 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -27,6 +28,7 @@ const navLinks = [
 export function Header() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
+  const logoImage = PlaceHolderImages.find((img) => img.id === 'logo');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,8 +46,7 @@ export function Header() {
        {isScrolled && <div className="absolute inset-0 w-full h-full header-scrolled-bg -z-10" />}
       <div className="container flex h-14 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          {/* Replace with your logo */}
-          <Image src="https://placehold.co/120x40/212529/98FF98?text=Streamlink" alt="Streamlink Logo" width={120} height={40} />
+          {logoImage && <Image src={logoImage.imageUrl} alt={logoImage.description} width={120} height={40} data-ai-hint={logoImage.imageHint} />}
         </Link>
         <nav className="hidden flex-1 items-center space-x-6 text-sm font-medium md:flex">
           {navLinks.map((link) => (
@@ -78,7 +79,7 @@ export function Header() {
             <SheetContent side="right">
               <div className="p-4">
                 <Link href="/" className="mr-6 flex items-center space-x-2 mb-6">
-                  <Image src="https://placehold.co/120x40/212529/98FF98?text=Streamlink" alt="Streamlink Logo" width={120} height={40} />
+                  {logoImage && <Image src={logoImage.imageUrl} alt={logoImage.description} width={120} height={40} data-ai-hint={logoImage.imageHint} />}
                 </Link>
                 <nav className="flex flex-col space-y-2">
                   {navLinks.map((link) => (
